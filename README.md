@@ -33,3 +33,7 @@ El sistema desarrollado cuenta con: **ServerLibrary**: Permite a múltiples clie
 
 Este proyecto está bajo la Licencia (GNU GENERAL PUBLIC LICENSE) - mira el archivo 
 [LICENSE](https://github.com/ce-itcr/MyInvincibleLibrary/blob/master/LICENSE) para detalles.
+
+<p align="center">
+  <img width=10% src="https://res.cloudinary.com/dek4evg4t/image/upload/v1558891921/CE2103/MyInvincibleLibrary/ic_launcher.png">
+</p>

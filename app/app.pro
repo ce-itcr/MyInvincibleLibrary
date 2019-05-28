@@ -33,3 +33,6 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+
+RESOURCES += \
+    imgresources.qrc

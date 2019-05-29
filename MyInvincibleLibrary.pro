@@ -2,9 +2,13 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     app \
-    src
+    src \
+    test
+
+app.depends = src
+test.depends = src
 
 DISTFILES += \
-        defaults.pri \
-        README.md \
-        LICENSE
+    README.md \
+    LICENSE \
+    defaults.pri

@@ -1,14 +1,16 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-05-29T17:01:02
+# Project created by QtCreator 2019-05-29T16:58:23
 #
 #-------------------------------------------------
+include(../defaults.pri)
 
-QT       += core gui
+QT       += testlib
+QT       -= gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+CONFIG += qt console warn_on depend_includepath testcase
+CONFIG -= app_bundle
 
-TARGET = app
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -24,14 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp
+        tst_default.cpp 
 
-HEADERS += \
-        mainwindow.h
-
-FORMS += \
-        mainwindow.ui
-
-RESOURCES += \
-    imgresources.qrc
+LIBS += -L../src -lmylib

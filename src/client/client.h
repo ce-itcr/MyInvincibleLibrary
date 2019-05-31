@@ -8,19 +8,22 @@
 
 class Client : public QObject
 {
+    Q_OBJECT
+
+public:
     static Client *getInstance();
 
-    void initHost(QString ip, QString port, QString path);
+    Client *initHost(QString ip, QString port, QString path);
 
     void updateHost(QString ip, QString port);
 
-    void GET(QString path, QNetworkRequest request);
+    void GET(QString path, QNetworkRequest request = QNetworkRequest());
 
-    void PUT(QString path, QNetworkRequest request, QString data);
+    void PUT(QString path, QString data, QNetworkRequest request = QNetworkRequest());
 
-    void POST(QString path, QNetworkRequest request, QString data);
+    void POST(QString path, QString data, QNetworkRequest request = QNetworkRequest());
 
-    void DELETE(QString path, QNetworkRequest request);
+    void DELETE(QString path, QNetworkRequest request = QNetworkRequest());
 
 signals:
     void readyRead(QString data);

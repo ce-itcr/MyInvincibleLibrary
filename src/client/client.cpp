@@ -1,9 +1,10 @@
 #include "client.h"
 
-void Client::initHost(QString ip, QString port, QString path)
+Client *Client::initHost(QString ip, QString port, QString path)
 {
     defaultPath = path;
     updateHost(ip, port);
+    return instance;
 }
 
 void Client::updateHost(QString ip, QString port)
@@ -22,7 +23,7 @@ void Client::GET(QString path, QNetworkRequest request)
     QObject::connect(manager, &QNetworkAccessManager::finished, this, &Client::replyFinished);
 }
 
-void Client::PUT(QString path, QNetworkRequest request, QString data)
+void Client::PUT(QString path, QString data, QNetworkRequest request)
 {
     QUrl url(Client::path + path);
     request.setUrl(url);
@@ -33,7 +34,7 @@ void Client::PUT(QString path, QNetworkRequest request, QString data)
     QObject::connect(manager, &QNetworkAccessManager::finished, this, &Client::replyFinished);
 }
 
-void Client::POST(QString path, QNetworkRequest request, QString data)
+void Client::POST(QString path, QString data, QNetworkRequest request)
 {
     QUrl url(Client::path + path);
     request.setUrl(url);

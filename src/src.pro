@@ -26,10 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         client/client.cpp \
+        client/clientinterface.cpp \
         src.cpp
 
 HEADERS += \
         client/client.h \
+        client/clientinterface.h \
         src.h
 unix {
     target.path = /usr/lib

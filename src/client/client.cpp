@@ -58,11 +58,10 @@ void Client::DELETE(QString path, QNetworkRequest request)
 void Client::replyFinished(QNetworkReply *reply)
 {
     QString message = reply->readAll();
-    if (message == "") return;
-
     int status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
     qDebug() << "Reply finished with status code: " << status;
-    readyRead(message);
+
+    if (message != "") readyRead(message);
 }
 
 Client::Client()

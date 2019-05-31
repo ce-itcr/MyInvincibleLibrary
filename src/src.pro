@@ -9,7 +9,7 @@ QT       -= gui
 QT += network
 QT += core
 
-TARGET = src
+TARGET = mylib
 TEMPLATE = lib
 CONFIG += staticlib
 

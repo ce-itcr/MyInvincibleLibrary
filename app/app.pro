@@ -25,13 +25,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    settings.cpp \
+    explorer.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    settings.h \
+    explorer.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    settings.ui \
+    explorer.ui
 
 RESOURCES += \
     imgresources.qrc

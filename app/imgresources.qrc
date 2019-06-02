@@ -22,5 +22,9 @@
         <file>img/server.png</file>
         <file>img/settings.png</file>
         <file>img/upArrow.png</file>
+        <file>img/settings_title.png</file>
+        <file>img/buttons/ok_button.png</file>
+        <file>img/buttons/ok_button_hover.png</file>
+        <file>img/upload_files_icon.png</file>
     </qresource>
 </RCC>

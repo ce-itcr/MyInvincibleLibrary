@@ -34,6 +34,12 @@ void MainWindow::showDate(){
     ui->date->setText(dateTimeText);
 }
 
+void MainWindow::uploadFiles(){
+    Explorer explorer;
+    explorer.setModal(true);
+    explorer.exec();
+}
+
 void MainWindow::buttonsInfo(){
     ui->filesSort_button->setToolTip("<h4>Reverse Sort</h4>");
     ui->filesView_button->setToolTip("<h4>List & Grid View</h4>");
@@ -48,10 +54,16 @@ void MainWindow::buttonsInfo(){
 
     ui->loggerButton->setToolTip("<h4>LogBack</h4>");
 
+    QPixmap upload_icon(":/img/upload_files_icon.png");
+
     QMenu *menu = new QMenu(this);
-    menu->addAction("Upload Files");
-    menu->addAction("Upload Folders");
+    QAction *uploadFiles = new QAction(upload_icon,"Upload Files", this);
+    QAction *uploadFolders = new QAction(upload_icon, "Upload Folders", this);
+    menu->addAction(uploadFiles);
+    menu->addAction(uploadFolders);
     ui->menuButton->setMenu(menu);
+    connect(uploadFiles, &QAction::triggered, this, &MainWindow::uploadFiles);
+    connect(uploadFolders, &QAction::triggered, this, &MainWindow::uploadFiles);
 }
 
 void MainWindow::on_filesView_button_clicked()
@@ -61,6 +73,8 @@ void MainWindow::on_filesView_button_clicked()
     if (view) icon.addFile(":/img/list.png");
     else icon.addFile(":/img/grid.png");
     ui->filesView_button->setIcon(icon);
+
+
 }
 
 void MainWindow::on_info_button_clicked()
@@ -74,3 +88,36 @@ void MainWindow::on_info_button_clicked()
                                                                 "c. Metadata DB: base de datos NoSQL para el almacenamiento de la metadata de las imágenes. \n"
                                                                 "d. MyIDE: permite a los múltiples clientes gestionar la metadata de las galerías de imágenes. \n");
 }
+
+void MainWindow::on_settings_button_clicked()
+{
+    Settings settings;
+    settings.setModal(true);
+    settings.exec();
+}
+
+void MainWindow::on_addMetadata_button_clicked()
+{
+
+}
+
+void MainWindow::on_consultMetada_button_clicked()
+{
+
+}
+
+void MainWindow::on_removeMetadata_button_clicked()
+{
+
+}
+
+void MainWindow::on_modifyMetadata_button_clicked()
+{
+
+}
+
+void MainWindow::on_loggerButton_clicked()
+{
+
+}
+

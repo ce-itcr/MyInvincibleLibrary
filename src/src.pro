@@ -37,3 +37,9 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+DISTFILES += \
+    util/logger.txt
+
+RESOURCES += \
+    utilresources.qrc

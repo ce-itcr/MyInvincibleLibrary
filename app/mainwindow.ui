@@ -245,7 +245,7 @@ border-radius: 10px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/img/server.png);</string>
+     <string notr="true">image: url(:/img/assets/server.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -318,7 +318,7 @@ QPushButton:hover{
     </property>
     <property name="icon">
      <iconset resource="imgresources.qrc">
-      <normaloff>:/img/list.png</normaloff>:/img/list.png</iconset>
+      <normaloff>:/img/assets/list.png</normaloff>:/img/assets/list.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="filesSort_button">
@@ -346,7 +346,7 @@ QPushButton:hover{
     </property>
     <property name="icon">
      <iconset resource="imgresources.qrc">
-      <normaloff>:/img/upArrow.png</normaloff>:/img/upArrow.png</iconset>
+      <normaloff>:/img/assets/upArrow.png</normaloff>:/img/assets/upArrow.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="info_button">
@@ -374,7 +374,7 @@ QPushButton:hover{
     </property>
     <property name="icon">
      <iconset resource="imgresources.qrc">
-      <normaloff>:/img/info.png</normaloff>:/img/info.png</iconset>
+      <normaloff>:/img/assets/info.png</normaloff>:/img/assets/info.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="settings_button">
@@ -402,7 +402,7 @@ QPushButton:hover{
     </property>
     <property name="icon">
      <iconset resource="imgresources.qrc">
-      <normaloff>:/img/settings.png</normaloff>:/img/settings.png</iconset>
+      <normaloff>:/img/assets/settings.png</normaloff>:/img/assets/settings.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="menuButton">

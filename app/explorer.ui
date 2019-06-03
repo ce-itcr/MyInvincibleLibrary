@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
+    <width>800</width>
     <height>600</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>300</width>
+     <width>400</width>
      <height>600</height>
     </rect>
    </property>
@@ -30,13 +30,32 @@
   <widget class="QListView" name="listView">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>400</x>
      <y>0</y>
-     <width>300</width>
+     <width>400</width>
      <height>600</height>
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/img/background.jpg);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>background</zorder>
+  <zorder>treeView</zorder>
+  <zorder>listView</zorder>
  </widget>
  <resources>
   <include location="imgresources.qrc"/>

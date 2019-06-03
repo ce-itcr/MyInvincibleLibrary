@@ -9,6 +9,7 @@
 
 #include "settings.h"
 #include "explorer.h"
+#include "src/metadatamanager.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,6 +25,8 @@ public:
     void appBrowser();
     void buttonsInfo();
     void uploadFiles();
+    int view = 0;
+    int sort = 0;
 
 private:
     Ui::MainWindow *ui;
@@ -38,6 +41,7 @@ private slots:
     void on_modifyMetadata_button_clicked();
     void on_loggerButton_clicked();
     void on_settings_button_clicked();
+    void on_filesSort_button_clicked();
 };
 
 #endif // MAINWINDOW_H

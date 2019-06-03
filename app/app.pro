@@ -3,6 +3,7 @@
 # Project created by QtCreator 2019-05-29T17:01:02
 #
 #-------------------------------------------------
+include(../defaults.pri)
 
 QT       += core gui
 
@@ -27,17 +28,33 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     settings.cpp \
-    explorer.cpp
+    explorer.cpp \
+    src/metadatamanager.cpp
 
 HEADERS += \
         mainwindow.h \
     settings.h \
-    explorer.h
+    explorer.h \
+    src/metadatamanager.h
 
 FORMS += \
         mainwindow.ui \
     settings.ui \
-    explorer.ui
+    explorer.ui \
+    src/metadatamanager.ui
 
 RESOURCES += \
     imgresources.qrc
+
+#win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../src/release/ -lmylib
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../src/debug/ -lmylib
+#else:unix: LIBS += -L$$OUT_PWD/../src/ -lmylib
+
+INCLUDEPATH += $$PWD/../src
+DEPENDPATH += $$PWD/../src
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../src/release/libmylib.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../src/debug/libmylib.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../src/release/mylib.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../src/debug/mylib.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../src/libmylib.a

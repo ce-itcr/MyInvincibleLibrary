@@ -120,6 +120,9 @@ p, li { white-space: pre-wrap; }
      <height>61</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>Apply Changes</string>
+   </property>
    <property name="styleSheet">
     <string notr="true">QPushButton:!hover{
 	border-image: url(:/img/buttons/ok_button.png);
@@ -142,7 +145,7 @@ QPushButton:hover{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/img/settings_title.png);</string>
+    <string notr="true">image: url(:/img/titles/settings_title.png);</string>
    </property>
    <property name="text">
     <string/>

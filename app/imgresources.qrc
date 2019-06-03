@@ -13,18 +13,23 @@
         <file>img/buttons/remove_button.png</file>
         <file>img/buttons/remove_button_hover.png</file>
         <file>img/background.jpg</file>
-        <file>img/grid.png</file>
         <file>img/ic_launcher.png</file>
         <file>img/imagotype.png</file>
-        <file>img/info.png</file>
-        <file>img/list.png</file>
         <file>img/myIDE_imagotype.png</file>
-        <file>img/server.png</file>
-        <file>img/settings.png</file>
-        <file>img/upArrow.png</file>
-        <file>img/settings_title.png</file>
         <file>img/buttons/ok_button.png</file>
         <file>img/buttons/ok_button_hover.png</file>
-        <file>img/upload_files_icon.png</file>
+        <file>img/titles/add_metadata_title.png</file>
+        <file>img/titles/consult_metadata_title.png</file>
+        <file>img/titles/modify_metadata_title.png</file>
+        <file>img/titles/remove_metadata_title.png</file>
+        <file>img/titles/settings_title.png</file>
+        <file>img/assets/downArrow.png</file>
+        <file>img/assets/grid.png</file>
+        <file>img/assets/info.png</file>
+        <file>img/assets/list.png</file>
+        <file>img/assets/server.png</file>
+        <file>img/assets/settings.png</file>
+        <file>img/assets/upArrow.png</file>
+        <file>img/assets/upload_files_icon.png</file>
     </qresource>
 </RCC>

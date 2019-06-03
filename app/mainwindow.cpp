@@ -54,7 +54,7 @@ void MainWindow::buttonsInfo(){
 
     ui->loggerButton->setToolTip("<h4>LogBack</h4>");
 
-    QPixmap upload_icon(":/img/upload_files_icon.png");
+    QPixmap upload_icon(":/img/assets/upload_files_icon.png");
 
     QMenu *menu = new QMenu(this);
     QAction *uploadFiles = new QAction(upload_icon,"Upload Files", this);
@@ -68,14 +68,23 @@ void MainWindow::buttonsInfo(){
 
 void MainWindow::on_filesView_button_clicked()
 {
-    bool view = true;
     QIcon icon;
-    if (view) icon.addFile(":/img/list.png");
-    else icon.addFile(":/img/grid.png");
+    if ((view % 2) == 0) icon.addFile(":/img/assets/grid.png");
+    else icon.addFile(":/img/assets/list.png");
     ui->filesView_button->setIcon(icon);
-
+    view ++;
 
 }
+
+void MainWindow::on_filesSort_button_clicked()
+{
+    QIcon icon;
+    if ((sort % 2) == 0) icon.addFile(":/img/assets/downArrow.png");
+    else icon.addFile(":/img/assets/upArrow.png");
+    ui->filesSort_button->setIcon(icon);
+    sort++;
+}
+
 
 void MainWindow::on_info_button_clicked()
 {
@@ -98,26 +107,41 @@ void MainWindow::on_settings_button_clicked()
 
 void MainWindow::on_addMetadata_button_clicked()
 {
-
+    MetadataManager manager;
+    manager.setModal(true);
+    manager.setTitle(0);
+    manager.exec();
 }
 
 void MainWindow::on_consultMetada_button_clicked()
 {
-
+    MetadataManager manager;
+    manager.setModal(true);
+    manager.setTitle(1);
+    manager.exec();
 }
 
 void MainWindow::on_removeMetadata_button_clicked()
 {
-
+    MetadataManager manager;
+    manager.setModal(true);
+    manager.setTitle(2);
+    manager.exec();
 }
 
 void MainWindow::on_modifyMetadata_button_clicked()
 {
-
+    MetadataManager manager;
+    manager.setModal(true);
+    manager.setTitle(3);
+    manager.exec();
 }
 
 void MainWindow::on_loggerButton_clicked()
 {
-
+    QFile file(":/util/logger.txt");
+    if(!file.open(QIODevice::ReadOnly)){
+        QMessageBox::warning(0,"Logger Information",file.errorString());
+    }
 }
 

@@ -1,27 +1,30 @@
 package ce.itcr.invincible.ws.res;
 
+import ce.itcr.invincible.data.FolderManager;
+
 class FoldersService {
 
     private static FoldersService instance = new FoldersService();
+    private FolderManager manager = FolderManager.getInstance();
 
     static FoldersService getInstance() {
         return instance;
     }
 
     String getFolders(int folderId) {
-        return "";
+        return manager.getFolders(folderId);
     }
 
     boolean putFolders(int folderId, String folders) {
-        return false;
+        return manager.createFolders(folderId, folders);
     }
 
     String postFolders(int folderId, String folders) {
-        return "";
+        return manager.modifiedFolders(folderId, folders);
     }
 
     boolean deleteFolders(int folderId) {
-        return false;
+        return manager.deleteFolders(folderId);
     }
 
     private FoldersService() {

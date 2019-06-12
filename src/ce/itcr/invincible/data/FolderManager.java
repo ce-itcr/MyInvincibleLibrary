@@ -7,8 +7,8 @@ import java.util.List;
 public class FolderManager {
 
     private static FolderManager instance = new FolderManager();
-    private MetaDataManager metaDataManager;
-    private RaidManager raidManager;
+    private MetaDataManager metaDataManager = MetaDataManager.getInstance();
+    private RaidManager raidManager = RaidManager.getInstance();
 
     public static FolderManager getInstance() {
         return instance;
@@ -16,7 +16,7 @@ public class FolderManager {
 
     public String getFolders(int folderId) {
         //List<String> metaData = metaDataManager;
-        //List<Image> raidManager.read();
+        raidManager.read();
         return "";
     }
 

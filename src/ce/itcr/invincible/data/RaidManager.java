@@ -10,6 +10,7 @@ public class RaidManager {
     private static RaidManager instance = new RaidManager();
     private int raidSize = 4;
     private String raidName = "Raid5";
+    private String driveName = "/drive";
 
     public static RaidManager getInstance() {
         return instance;
@@ -31,7 +32,7 @@ public class RaidManager {
     }
 
     private RaidManager() {
-
+        verifiedDrives();
     }
 
     private void initDrives() {
@@ -39,7 +40,7 @@ public class RaidManager {
         try {
             new File(raidName).mkdir();
             for (int i = 0; i  < raidSize; i++) {
-                String path = raidName + "/drive" + "i";
+                String path = raidName + driveName + i;
                 new File(path).mkdir();
             }
             System.out.print(raidName + " created");
@@ -58,7 +59,7 @@ public class RaidManager {
             String missingDrive = "";
             int missingCount = 0;
             for (int i = 0; i < raidSize; i++) {
-                String drivePath = raidName + "/drive" + i;
+                String drivePath = raidName + driveName + i;
                 Path path = Paths.get(drivePath);
                 if (Files.notExists(path)) {
                     missingDrive = drivePath;
@@ -79,6 +80,6 @@ public class RaidManager {
     }
 
     private void recoverDrive(String drivePath) {
-
+        System.out.print("Recovering: " + drivePath);
     }
 }

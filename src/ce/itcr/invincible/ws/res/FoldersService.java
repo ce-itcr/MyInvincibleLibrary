@@ -11,7 +11,7 @@ class FoldersService {
         return instance;
     }
 
-    String getFolders(int folderId) {
+    String getFolders(String folderId) {
         return manager.getFolders(folderId);
     }
 
@@ -19,11 +19,11 @@ class FoldersService {
         return manager.createFolders(folderId, folders);
     }
 
-    String postFolders(int folderId, String folders) {
+    String postFolders(String folderId, String folders) {
         return manager.modifiedFolders(folderId, folders);
     }
 
-    boolean deleteFolders(int folderId) {
+    boolean deleteFolders(String folderId) {
         return manager.deleteFolders(folderId);
     }
 

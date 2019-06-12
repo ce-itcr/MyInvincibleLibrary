@@ -10,19 +10,19 @@ public class MetaDataManager {
         return instance;
     }
 
-    public boolean INSERT() {
+    public boolean INSERT(List<Image> images) {
         return false;
     }
 
-    public List<String> SELECT() {
+    public List<Image> SELECT(List<String> imagesId) {
         return null;
     }
 
-    public boolean DELETE() {
+    public boolean DELETE(List<String> imagesId) {
         return false;
     }
 
-    public boolean UPDATE() {
+    public boolean UPDATE(List<Image> images) {
         return false;
     }
 

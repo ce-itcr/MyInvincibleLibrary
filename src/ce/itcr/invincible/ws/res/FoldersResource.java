@@ -13,7 +13,7 @@ public class FoldersResource {
 
     @GET
     @Path("/{folderId}")
-    public Response getImages(@PathParam("folderId") int folderId) {
+    public Response getImages(@PathParam("folderId") String folderId) {
         String data = folders.getFolders(folderId);
 
         Response.ResponseBuilder builder = Response.ok(data);
@@ -37,7 +37,7 @@ public class FoldersResource {
 
     @POST
     @Path("/{folderId}")
-    public Response postImages(@PathParam("folderId") int folderId, String message) {
+    public Response postImages(@PathParam("folderId") String folderId, String message) {
         String data = folders.postFolders(folderId, message);
 
         Response.ResponseBuilder builder = Response.ok(data);
@@ -49,7 +49,7 @@ public class FoldersResource {
 
     @DELETE
     @Path("/{folderId}")
-    public Response deleteImages(@PathParam("folderId") int folderId) {
+    public Response deleteImages(@PathParam("folderId") String folderId) {
         boolean status = folders.deleteFolders(folderId);
 
         Response.ResponseBuilder builder = Response.ok();

@@ -26,7 +26,7 @@ public class RaidManager {
         return false;
     }
 
-    public boolean seek() {
+    public boolean seek(String imageId) {
         verifiedDrives();
         return false;
     }

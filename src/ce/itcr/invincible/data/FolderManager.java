@@ -1,9 +1,5 @@
 package ce.itcr.invincible.data;
 
-import jdk.nashorn.api.scripting.JSObject;
-
-import java.util.List;
-
 public class FolderManager {
 
     private static FolderManager instance = new FolderManager();
@@ -14,8 +10,12 @@ public class FolderManager {
         return instance;
     }
 
-    public String getFolders(int folderId) {
-        //List<String> metaData = metaDataManager;
+    public String getFolders(String folderId) {
+
+        /// ****Cambiar a parseo**** ///
+        //metaDataManager.SELECT();
+
+        raidManager.seek(folderId);
         raidManager.read();
         return "";
     }
@@ -24,11 +24,11 @@ public class FolderManager {
         return false;
     }
 
-    public String modifiedFolders(int folderId, String folders) {
+    public String modifiedFolders(String folderId, String folders) {
         return "";
     }
 
-    public boolean deleteFolders(int folderId) {
+    public boolean deleteFolders(String folderId) {
         return false;
     }
 }

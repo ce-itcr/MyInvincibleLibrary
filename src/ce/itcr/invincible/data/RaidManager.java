@@ -1,85 +1,22 @@
 package ce.itcr.invincible.data;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import ce.itcr.invincible.data.diskManager.RaidManagerAux;
 
 public class RaidManager {
 
     private static RaidManager instance = new RaidManager();
-    private int raidSize = 4;
-    private String raidName = "Raid5";
-    private String driveName = "/drive";
 
-    public static RaidManager getInstance() {
+    public static RaidManager getInstance(){
         return instance;
     }
 
-    public String read() {
-        verifiedDrives();
-        return "";
-    }
-
-    public boolean write(String data) {
-        verifiedDrives();
-        return false;
-    }
-
-    public boolean seek(String imageId) {
-        verifiedDrives();
-        return false;
-    }
-
-    private RaidManager() {
-        verifiedDrives();
-    }
-
-    private void initDrives() {
-        System.out.print("Creating " + raidName + "...");
-        try {
-            new File(raidName).mkdir();
-            for (int i = 0; i  < raidSize; i++) {
-                String path = raidName + driveName + i;
-                new File(path).mkdir();
-            }
-            System.out.print(raidName + " created");
-        }
-        catch (Exception e) {
-            System.out.print(e);
-        }
-    }
-
-    private void verifiedDrives() {
-
-        // Checks if RAID5 is missing
-        if (Files.exists(Paths.get(raidName))) {
-
-            // Checks if any drive is missing
-            String missingDrive = "";
-            int missingCount = 0;
-            for (int i = 0; i < raidSize; i++) {
-                String drivePath = raidName + driveName + i;
-                Path path = Paths.get(drivePath);
-                if (Files.notExists(path)) {
-                    missingDrive = drivePath;
-                    missingCount++;
-                }
-            }
-            // If more that one drive is missing
-            if (missingCount == 1) recoverDrive(missingDrive);
-            else if (missingCount > 1) {
-                System.out.print("Error : missing more than one drive");
-                initDrives();
-            }
-        }
-        else {
-            System.out.print("Error : missing " + raidName);
-            initDrives();
-        }
-    }
-
-    private void recoverDrive(String drivePath) {
-        System.out.print("Recovering: " + drivePath);
+    public static void runRaid(){
+        RaidManagerAux tmpRaid = new RaidManagerAux(4, 4);
+        tmpRaid.write(0,5);
+        tmpRaid.write(1,5);
+        tmpRaid.show();
     }
 }
+
+
+

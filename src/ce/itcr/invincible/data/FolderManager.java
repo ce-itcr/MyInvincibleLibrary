@@ -15,8 +15,9 @@ public class FolderManager {
         /// ****Cambiar a parseo**** ///
         //metaDataManager.SELECT();
 
-        raidManager.seek(folderId);
-        raidManager.read();
+//        raidManager.seek(folderId);
+//        raidManager.read();
+
         return "";
     }
 

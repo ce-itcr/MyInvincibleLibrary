@@ -1,16 +1,32 @@
 package ce.itcr.invincible.data;
 
 import java.util.List;
+import java.sql.*;
 
 public class MetaDataManager {
 
     private static MetaDataManager instance = new MetaDataManager();
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://localhost/EMP";
+    static final String USER = "username";
+    static final String PASS = "password";
+    private Connection connection;
+
+    private MetaDataManager() {
+        connect();
+    }
 
     public static MetaDataManager getInstance() {
         return instance;
     }
 
-    public boolean INSERT(List<Image> images) {
+    public boolean INSERT(List<Image> images) throws SQLException {
+        Statement statement = connection.createStatement();
+        String sql = "INSERT ...";
+        ResultSet response = statement.executeQuery(sql);
+
+        response.close();
+        statement.close();
         return false;
     }
 
@@ -24,6 +40,14 @@ public class MetaDataManager {
 
     public boolean UPDATE(List<Image> images) {
         return false;
+    }
+
+    private void connect() {
+        try {
+             connection = DriverManager.getConnection(DB_URL, USER, PASS);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     //(INSERT, SELECT, DELETE y UPDATE)

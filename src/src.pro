@@ -27,12 +27,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         client/client.cpp \
         client/clientinterface.cpp \
-        src.cpp
+        src.cpp \
+    gallery/foldermanager.cpp \
+    gallery/folder.cpp \
+    gallery/image.cpp
 
 HEADERS += \
         client/client.h \
         client/clientinterface.h \
-        src.h
+        src.h \
+    gallery/foldermanager.h \
+    gallery/folder.h \
+    gallery/image.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

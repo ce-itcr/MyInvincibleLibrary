@@ -234,6 +234,17 @@ border-radius: 10px;</string>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>971</width>
+       <height>641</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout"/>
+    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -446,6 +457,34 @@ QPushButton:hover{
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="refreshButton">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>85</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	border-radius: 20px;
+}
+QPushButton:!hover{
+	background-color: rgb(85, 96, 128);
+}
+QPushButton:hover{
+	background-color: rgb(66, 74, 96);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="imgresources.qrc">
+      <normaloff>:/img/assets/refresh.png</normaloff>:/img/assets/refresh.png</iconset>
     </property>
    </widget>
   </widget>

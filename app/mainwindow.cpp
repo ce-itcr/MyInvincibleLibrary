@@ -20,12 +20,6 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::appBrowser(){
-//    QFile file(":/util/tests");
-//    if(!file.open(QIODevice::ReadOnly)){
-//        QMessageBox::information(0,"Info",file.errorString());
-//    }
-//    QTextStream in(&file);
-//    ui->textBrowser->setText(in.readAll());
 }
 
 void MainWindow::showDate(){
@@ -38,6 +32,21 @@ void MainWindow::uploadFiles(){
     Explorer explorer;
     explorer.setModal(true);
     explorer.exec();
+}
+
+void MainWindow::uploadFilesAux(){
+    QFileDialog dialog(this);
+    dialog.setNameFilter(tr("Images (*.png *.xpm *.jpg)"));
+    dialog.setViewMode(QFileDialog::Detail);
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Images"), "/home/rpi/Desktop/Picture/Sample Pictures", tr("Image Files (*.png *.jpg *.bmp)"));
+    if (!fileName.isEmpty()){
+        QImage image(fileName);
+//        ui->label_pic->setPixmap(QPixmap::fromImage(image));
+        QLabel *tmpLabel = new QLabel();
+        tmpLabel->setPixmap(QPixmap::fromImage(image));
+        tmpLabel->setGeometry(0,0,100,100);
+        ui->gridLayout->addWidget(tmpLabel, 0, 0);
+    }
 }
 
 void MainWindow::buttonsInfo(){
@@ -62,8 +71,10 @@ void MainWindow::buttonsInfo(){
     menu->addAction(uploadFiles);
     menu->addAction(uploadFolders);
     ui->menuButton->setMenu(menu);
-    connect(uploadFiles, &QAction::triggered, this, &MainWindow::uploadFiles);
+//    connect(uploadFiles, &QAction::triggered, this, &MainWindow::uploadFiles);
     connect(uploadFolders, &QAction::triggered, this, &MainWindow::uploadFiles);
+
+    connect(uploadFiles, &QAction::triggered, this, &MainWindow::uploadFilesAux);
 }
 
 void MainWindow::on_filesView_button_clicked()
@@ -145,3 +156,12 @@ void MainWindow::on_loggerButton_clicked()
     }
 }
 
+
+void MainWindow::on_refreshButton_clicked()
+{
+    QIcon icon;
+    if ((refresh % 2) == 0) icon.addFile(":/img/assets/refresh_hover.png");
+    else icon.addFile(":/img/assets/refresh.png");
+    ui->refreshButton->setIcon(icon);
+    refresh++;
+}

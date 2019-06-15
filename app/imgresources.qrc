@@ -31,5 +31,10 @@
         <file>img/assets/settings.png</file>
         <file>img/assets/upArrow.png</file>
         <file>img/assets/upload_files_icon.png</file>
+        <file>img/assets/refresh.png</file>
+        <file>img/assets/refresh_hover.png</file>
+        <file>img/assets/calendar.png</file>
+        <file>img/assets/letter_A.png</file>
+        <file>img/assets/man-user.png</file>
     </qresource>
 </RCC>

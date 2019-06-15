@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QMenu>
+#include <QFileDialog>
 
 #include "settings.h"
 #include "explorer.h"
@@ -25,8 +26,10 @@ public:
     void appBrowser();
     void buttonsInfo();
     void uploadFiles();
+    void uploadFilesAux();
     int view = 0;
     int sort = 0;
+    int refresh = 0;
 
 private:
     Ui::MainWindow *ui;
@@ -42,6 +45,7 @@ private slots:
     void on_loggerButton_clicked();
     void on_settings_button_clicked();
     void on_filesSort_button_clicked();
+    void on_refreshButton_clicked();
 };
 
 #endif // MAINWINDOW_H

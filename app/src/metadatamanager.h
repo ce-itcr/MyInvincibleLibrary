@@ -2,6 +2,7 @@
 #define METADATAMANAGER_H
 
 #include <QDialog>
+#include <QtWidgets>
 
 namespace Ui {
 class MetadataManager;
@@ -18,6 +19,13 @@ public:
 
 private:
     Ui::MetadataManager *ui;
+
+    QLabel* editableB;
+
+    void add_metadata_grid();
+    void consult_metadata_grid();
+    void remove_metadata_grid();
+    void modify_metadata_grid();
 };
 
 #endif // METADATAMANAGER_H

@@ -144,7 +144,7 @@ void MetadataManager::remove_metadata_grid(){
     QPushButton* ok_btn = new QPushButton("OK");
     ui->gridLayout->addWidget(ok_btn,2,2);
 
-    QTableWidget* tableWidget = new QTableWidget(1,6, this);
+    QTableWidget* tableWidget = new QTableWidget(30,6, this);
     ui->gridLayout->addWidget(tableWidget,4,0,2,3);
 
     QPushButton* deleteMetadata = new QPushButton("Sure you want to delete?");

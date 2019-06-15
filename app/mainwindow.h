@@ -11,6 +11,7 @@
 #include "settings.h"
 #include "explorer.h"
 #include "src/metadatamanager.h"
+#include "src/addimages.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,16 +24,17 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+private:
+    Ui::MainWindow *ui;
     void appBrowser();
     void buttonsInfo();
     void uploadFiles();
     void uploadFilesAux();
+    void addImages();
     int view = 0;
     int sort = 0;
     int refresh = 0;
-
-private:
-    Ui::MainWindow *ui;
 
 private slots:
     void showDate();

@@ -34,19 +34,10 @@ void MainWindow::uploadFiles(){
     explorer.exec();
 }
 
-void MainWindow::uploadFilesAux(){
-    QFileDialog dialog(this);
-    dialog.setNameFilter(tr("Images (*.png *.xpm *.jpg)"));
-    dialog.setViewMode(QFileDialog::Detail);
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Images"), "/home/rpi/Desktop/Picture/Sample Pictures", tr("Image Files (*.png *.jpg *.bmp)"));
-    if (!fileName.isEmpty()){
-        QImage image(fileName);
-//        ui->label_pic->setPixmap(QPixmap::fromImage(image));
-        QLabel *tmpLabel = new QLabel();
-        tmpLabel->setPixmap(QPixmap::fromImage(image));
-        tmpLabel->setGeometry(0,0,100,100);
-        ui->gridLayout->addWidget(tmpLabel, 0, 0);
-    }
+void MainWindow::addImages(){
+    AddImages AddImagesWindow;
+    AddImagesWindow.setModal(true);
+    AddImagesWindow.exec();
 }
 
 void MainWindow::buttonsInfo(){
@@ -72,9 +63,10 @@ void MainWindow::buttonsInfo(){
     menu->addAction(uploadFolders);
     ui->menuButton->setMenu(menu);
 //    connect(uploadFiles, &QAction::triggered, this, &MainWindow::uploadFiles);
-    connect(uploadFolders, &QAction::triggered, this, &MainWindow::uploadFiles);
 
-    connect(uploadFiles, &QAction::triggered, this, &MainWindow::uploadFilesAux);
+    connect(uploadFolders, &QAction::triggered, this, &MainWindow::uploadFiles);
+    connect(uploadFiles, &QAction::triggered, this, &MainWindow::addImages);
+
 }
 
 void MainWindow::on_filesView_button_clicked()
@@ -84,7 +76,6 @@ void MainWindow::on_filesView_button_clicked()
     else icon.addFile(":/img/assets/list.png");
     ui->filesView_button->setIcon(icon);
     view ++;
-
 }
 
 void MainWindow::on_filesSort_button_clicked()

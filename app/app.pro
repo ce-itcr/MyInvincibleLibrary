@@ -29,19 +29,22 @@ SOURCES += \
         mainwindow.cpp \
     settings.cpp \
     explorer.cpp \
-    src/metadatamanager.cpp
+    src/metadatamanager.cpp \
+    src/addimages.cpp
 
 HEADERS += \
         mainwindow.h \
     settings.h \
     explorer.h \
-    src/metadatamanager.h
+    src/metadatamanager.h \
+    src/addimages.h
 
 FORMS += \
         mainwindow.ui \
     settings.ui \
     explorer.ui \
-    src/metadatamanager.ui
+    src/metadatamanager.ui \
+    src/addimages.ui
 
 RESOURCES += \
     imgresources.qrc

@@ -48,32 +48,33 @@ void MetadataManager::setTitle(int action){
 
 void MetadataManager::add_metadata_grid(){
     QLabel *imgName = new QLabel("Name:");
-    QLineEdit *txt_imgName = new QLineEdit;
+    txt_imgName = new QLineEdit;
     ui->gridLayout->addWidget(imgName,0,0);
     ui->gridLayout->addWidget(txt_imgName,0,1);
 
     QLabel* imgAuthor = new QLabel("Author:");
-    QLineEdit* txt_imgAuthor = new QLineEdit;
+    txt_imgAuthor = new QLineEdit;
     ui->gridLayout->addWidget(imgAuthor,1,0);
     ui->gridLayout->addWidget(txt_imgAuthor,1,1);
 
     QLabel* imgDate = new QLabel("Date:");
-    QLineEdit* txt_imgDate = new QLineEdit;
+    txt_imgDate = new QLineEdit;
     ui->gridLayout->addWidget(imgDate,2,0);
     ui->gridLayout->addWidget(txt_imgDate,2,1);
 
     QLabel* imgSize = new QLabel("Size:");
-    QLineEdit* txt_imgSize = new QLineEdit;
+    txt_imgSize = new QLineEdit;
     ui->gridLayout->addWidget(imgSize,3,0);
     ui->gridLayout->addWidget(txt_imgSize,3,1);
 
     QLabel* imgBrief = new QLabel("Description:");
-    QLineEdit* txt_imgBrief = new QLineEdit;
+    txt_imgBrief = new QLineEdit;
     ui->gridLayout->addWidget(imgBrief,4,0);
     ui->gridLayout->addWidget(txt_imgBrief,4,1);
 
     QPushButton* ok_btn = new QPushButton("OK");
     ui->gridLayout->addWidget(ok_btn, 5, 0, 1, 2);
+    connect(ok_btn, &QPushButton::clicked, this, &MetadataManager::ok_btn_sender);
 }
 
 void MetadataManager::consult_metadata_grid(){
@@ -147,7 +148,7 @@ void MetadataManager::remove_metadata_grid(){
     QTableWidget* tableWidget = new QTableWidget(30,6, this);
     ui->gridLayout->addWidget(tableWidget,4,0,2,3);
 
-    QPushButton* deleteMetadata = new QPushButton("Sure you want to delete?");
+    QPushButton* deleteMetadata = new QPushButton("Delete");
     ui->gridLayout->addWidget(deleteMetadata,5,0,1,3);
 }
 
@@ -185,4 +186,17 @@ void MetadataManager::modify_metadata_grid(){
 
     QTableWidget* tableWidget = new QTableWidget(30,6, this);
     ui->gridLayout->addWidget(tableWidget,3,0,3,3);
+
+    QPushButton* modify_btn = new QPushButton("OK");
+    ui->gridLayout->addWidget(modify_btn,5,0,1,3);
+}
+
+
+void MetadataManager::ok_btn_sender(){
+    if(txt_imgName->cursorPosition() > 0 && txt_imgAuthor->cursorPosition() > 0 && txt_imgDate->cursorPosition() > 0 &&
+            txt_imgSize->cursorPosition() > 0 && txt_imgBrief->cursorPosition() > 0){
+        qDebug() << "Enviar información al Server";
+    } else{
+        QMessageBox::warning(this, "Warning", "You must fill all the spaces.");
+    }
 }

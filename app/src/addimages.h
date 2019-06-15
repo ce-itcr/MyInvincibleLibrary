@@ -18,7 +18,15 @@ public:
 
 private:
     Ui::AddImages *ui;
+
+    QLineEdit* txt_imgDate;
+    QLineEdit* txt_imgSize;
+    QLineEdit* txt_imgAuthor;
+    QLineEdit* txt_imgName;
+    QLineEdit* txt_imgBrief;
+
     void uploadImages();
+    void ok_btn_sender();
 
 public slots:
     void configureWindow();

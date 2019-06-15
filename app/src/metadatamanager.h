@@ -21,11 +21,17 @@ private:
     Ui::MetadataManager *ui;
 
     QLabel* editableB;
+    QLineEdit* txt_imgDate;
+    QLineEdit* txt_imgSize;
+    QLineEdit* txt_imgAuthor;
+    QLineEdit* txt_imgName;
+    QLineEdit* txt_imgBrief;
 
     void add_metadata_grid();
     void consult_metadata_grid();
     void remove_metadata_grid();
     void modify_metadata_grid();
+    void ok_btn_sender();
 };
 
 #endif // METADATAMANAGER_H

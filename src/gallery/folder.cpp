@@ -46,22 +46,22 @@ void Folder::setId(const QString &value)
     id = value;
 }
 
-QList<Folder> Folder::getSubFolders() const
-{
-    return subFolders;
-}
+//QList<Folder> Folder::getSubFolders() const
+//{
+//    return subFolders;
+//}
 
-void Folder::setSubFolders(const QList<Folder> &value)
-{
-    subFolders = value;
-}
+//void Folder::setSubFolders(const QList<Folder> &value)
+//{
+//    subFolders = value;
+//}
 
-QList<Image> Folder::getImages() const
-{
-    return images;
-}
+//QList<Image> Folder::getImages() const
+//{
+//    return images;
+//}
 
-void Folder::setImages(const QList<Image> &value)
-{
-    images = value;
-}
+//void Folder::setImages(const QList<Image> &value)
+//{
+//    images = value;
+//}

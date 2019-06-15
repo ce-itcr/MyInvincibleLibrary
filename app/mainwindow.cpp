@@ -63,8 +63,7 @@ void MainWindow::buttonsInfo(){
     menu->addAction(uploadFolders);
     ui->menuButton->setMenu(menu);
 //    connect(uploadFiles, &QAction::triggered, this, &MainWindow::uploadFiles);
-
-    connect(uploadFolders, &QAction::triggered, this, &MainWindow::uploadFiles);
+//    connect(uploadFolders, &QAction::triggered, this, &MainWindow::uploadFiles);
     connect(uploadFiles, &QAction::triggered, this, &MainWindow::addImages);
 
 }

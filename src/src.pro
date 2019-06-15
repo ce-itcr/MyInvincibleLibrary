@@ -32,7 +32,12 @@ SOURCES += \
     gallery/folder.cpp \
     gallery/image.cpp \
     json/jsonserializer.cpp \
-    json/jsonconverter.cpp
+    json/jsonconverter.cpp \
+    Huffman/BinaryTree.cpp \
+    Huffman/BinaryTreeNode.cpp \
+    Huffman/HuffmanCompression.cpp \
+    Huffman/List.cpp \
+    Huffman/ListNode.cpp
 
 HEADERS += \
         client/client.h \
@@ -43,7 +48,12 @@ HEADERS += \
     gallery/image.h \
     json/jsonserializer.h \
     json/jsonserializable.h \
-    json/jsonconverter.h
+    json/jsonconverter.h \
+    Huffman/BinaryTree.h \
+    Huffman/BinaryTreeNode.h \
+    Huffman/HuffmanCompression.h \
+    Huffman/List.h \
+    Huffman/ListNode.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

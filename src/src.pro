@@ -30,7 +30,9 @@ SOURCES += \
         src.cpp \
     gallery/foldermanager.cpp \
     gallery/folder.cpp \
-    gallery/image.cpp
+    gallery/image.cpp \
+    json/jsonserializer.cpp \
+    json/jsonconverter.cpp
 
 HEADERS += \
         client/client.h \
@@ -38,7 +40,10 @@ HEADERS += \
         src.h \
     gallery/foldermanager.h \
     gallery/folder.h \
-    gallery/image.h
+    gallery/image.h \
+    json/jsonserializer.h \
+    json/jsonserializable.h \
+    json/jsonconverter.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

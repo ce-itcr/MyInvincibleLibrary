@@ -1,5 +1,5 @@
-#ifndef HUFFMAN2_LISTNODE_H
-#define HUFFMAN2_LISTNODE_H
+#ifndef  LISTNODE_H
+#define  LISTNODE_H
 
 #include <iostream>
 
@@ -21,4 +21,4 @@ public:
 };
 
 
-#endif //HUFFMAN2_LISTNODE_H
+#endif // LISTNODE_H

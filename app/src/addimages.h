@@ -4,6 +4,10 @@
 #include <QDialog>
 #include <QtWidgets>
 
+#include "Huffman/HuffmanCompression.h"
+#include "Huffman/BinaryTree.h"
+#include "Huffman/ListBT.h"
+
 namespace Ui {
 class AddImages;
 }
@@ -20,6 +24,7 @@ private:
     Ui::AddImages *ui;
 
     QString fileName;
+    QString tmpList;
 
     QLineEdit* txt_imgDate;
     QLineEdit* txt_imgSize;
@@ -29,7 +34,6 @@ private:
 
     void uploadImages();
     void ok_btn_sender();
-    void convert();
     void compress();
 
 public slots:

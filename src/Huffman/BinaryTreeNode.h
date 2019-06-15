@@ -1,5 +1,5 @@
-#ifndef HUFFMAN2_BINARYTREENODE_H
-#define HUFFMAN2_BINARYTREENODE_H
+#ifndef  BINARYTREENODE_H
+#define  BINARYTREENODE_H
 
 #include <iostream>
 
@@ -33,4 +33,4 @@ public:
 };
 
 
-#endif //HUFFMAN2_BINARYTREENODE_H
+#endif // BINARYTREENODE_H

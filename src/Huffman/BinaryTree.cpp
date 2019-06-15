@@ -16,13 +16,15 @@ void BinaryTree::addNode(int frecuency, string name,ListNode *node) {
 }
 
 BinaryTreeNode* BinaryTree::addNode(BinaryTreeNode *currentNode,int frecuency, string name,ListNode *node) {
+    cout << "w" << endl;
     bool goRight = false;
-
+    cout << "ww" << endl;
     if (isEmpty()) {
 
         return new BinaryTreeNode(name, frecuency);
 
     }else{
+            cout << "www" << endl;
         if (currentNode == nullptr) {
 
             return new BinaryTreeNode(name, frecuency);

@@ -1,8 +1,8 @@
 #include "HuffmanCompression.h"
 
-List *HuffmanCompression::compress(string word) {
+ ListBT *HuffmanCompression::compress(string word) {
     this->word = word;
-    List *newList = new List();
+     ListBT *newList = new  ListBT();
     for(int i = 0; i < word.length() ; i++){
         string temp;
         temp.push_back(word[i]);
@@ -19,15 +19,16 @@ List *HuffmanCompression::compress(string word) {
         }
     }
     return newList;
-};
+}
 
-BinaryTree *HuffmanCompression::order(List *list){
-    List *tempList = new List();
+BinaryTree *HuffmanCompression::order(ListBT *list){
+     ListBT *tempList = new  ListBT();
     ListNode *tempNode = list->m_head;
     while(tempNode){
         tempList->add_head(tempNode->frecuency,tempNode->name);
         tempNode = tempNode->next;
     }
+
     while(list->getM_num_nodes() != 1) {
         ListNode *tempNode1 = list->m_head;
         ListNode *tempNode2 = list->m_head->next;
@@ -41,18 +42,24 @@ BinaryTree *HuffmanCompression::order(List *list){
         newNode = nullptr;
         delete newNode;
     }
+
+    cout << "hhh" << endl;
 //    tempList->print();
     BinaryTree *bt = new BinaryTree();
     tempNode = tempList->m_head;
+    cout << "h" << endl;
     while(tempNode){
         bt->addNode(tempNode->frecuency,tempNode->name,tempNode);
         tempNode = tempNode->next;
     }
+
+    cout << "hh" << endl;
     for(int i = 0; i < this->word.length() ; i++) {
         string temp;
         temp.push_back(this->word[i]);
         this->compressedWord += tempList->find(temp);
     }
+    cout << "hhh" << endl;
     cout << compressedWord << endl;
     tempList = nullptr;
     tempNode = nullptr;

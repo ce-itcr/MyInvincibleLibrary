@@ -36,8 +36,8 @@ SOURCES += \
     Huffman/BinaryTree.cpp \
     Huffman/BinaryTreeNode.cpp \
     Huffman/HuffmanCompression.cpp \
-    Huffman/List.cpp \
-    Huffman/ListNode.cpp
+    Huffman/ListNode.cpp \
+    Huffman/ListBT.cpp
 
 HEADERS += \
         client/client.h \
@@ -52,8 +52,8 @@ HEADERS += \
     Huffman/BinaryTree.h \
     Huffman/BinaryTreeNode.h \
     Huffman/HuffmanCompression.h \
-    Huffman/List.h \
-    Huffman/ListNode.h
+    Huffman/ListNode.h \
+    Huffman/ListBT.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

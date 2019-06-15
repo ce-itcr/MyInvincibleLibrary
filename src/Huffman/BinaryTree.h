@@ -1,5 +1,5 @@
-#ifndef HUFFMAN2_BINARYTREE_H
-#define HUFFMAN2_BINARYTREE_H
+#ifndef BINARYTREE_H
+#define BINARYTREE_H
 
 #include "BinaryTreeNode.h"
 #include "ListNode.h"
@@ -20,4 +20,4 @@ private:
 };
 
 
-#endif //HUFFMAN2_BINARYTREE_H
+#endif // BINARYTREE_H

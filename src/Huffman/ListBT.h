@@ -1,11 +1,11 @@
-#ifndef HUFFMAN2_LIST_H
-#define HUFFMAN2_LIST_H
+#ifndef  LISTBT_H
+#define  LISTBT_H
 
 #include "ListNode.h"
 
-class List {
+class ListBT {
 public:
-    List();
+    ListBT();
 
     void add_head(int frecuency, string name);
     void add_end(int frecuency, string name);
@@ -25,4 +25,4 @@ public:
 };
 
 
-#endif //HUFFMAN2_LIST_H
+#endif // LISTBT_H

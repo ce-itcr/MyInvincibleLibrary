@@ -1,17 +1,17 @@
-#ifndef HUFFMAN2_HUFFMANCOMPRESSION_H
-#define HUFFMAN2_HUFFMANCOMPRESSION_H
+#ifndef  HUFFMANCOMPRESSION_H
+#define  HUFFMANCOMPRESSION_H
 
 #include <iostream>
-#include "List.h"
+#include "ListBT.h"
 #include "BinaryTree.h"
 
 using namespace std;
 
 class HuffmanCompression {
 public:
-    List *compress(string word);
-    BinaryTree* order(List *list);
-    BinaryTree* listToBinaryTree(List *list);
+    ListBT *compress(string word);
+    BinaryTree* order( ListBT *list);
+    BinaryTree* listToBinaryTree( ListBT *list);
     string decompress(BinaryTree* binaryTree, string data);
 
     string compressedWord;
@@ -20,4 +20,4 @@ private:
 };
 
 
-#endif //HUFFMAN2_HUFFMANCOMPRESSION_H
+#endif // HUFFMANCOMPRESSION_H

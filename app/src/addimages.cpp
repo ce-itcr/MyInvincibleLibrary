@@ -23,10 +23,6 @@ void AddImages::configureWindow(){
     QLabel *imgPath = new QLabel("Image Path: ");
     ui->gridLayout_2->addWidget(imgPath,1,0);
 
-    QPushButton *convert = new QPushButton("Convert");
-    ui->gridLayout_2->addWidget(convert,1,3);
-    connect(convert, &QPushButton::clicked, this, &AddImages::convert);
-
     QLabel *imgName = new QLabel("Name:");
     txt_imgName = new QLineEdit;
     ui->gridLayout->addWidget(imgName,0,0);
@@ -66,10 +62,12 @@ void AddImages::uploadImages(){
     QFileInfo imgFile(fileName);
     if (!fileName.isEmpty()){
         QImage image(fileName);
-//        ui->img_preview->setPixmap(QPixmap::fromImage(image));
+        ui->img_preview->setPixmap(QPixmap::fromImage(image));
 
         txt_imgName->setText(imgFile.fileName());
+        tmpList.append(imgFile.fileName() + ";");
         txt_imgAuthor->setText(imgFile.owner());
+        tmpList.append(imgFile.owner() + ";");
 
         QLabel *path = new QLabel(fileName);
         ui->gridLayout_2->addWidget(path,1,1);
@@ -78,37 +76,55 @@ void AddImages::uploadImages(){
         QString dateTimeText = dateTime.toString();
         txt_imgDate->setText(dateTimeText);
         ui->gridLayout->addWidget(txt_imgDate,2,1);
+//        tmpList.append(dateTimeText + ";");
 
         size = imgFile.size();
         txt_imgSize->setText(QString::number(size) + " bytes");
+        tmpList.append(QString::number(size) + ";");
+
 
         txt_imgBrief->setText(imgFile.absoluteFilePath());
+        tmpList.append(imgFile.absoluteFilePath());
+
     }
 }
 
 void AddImages::ok_btn_sender(){
     if(txt_imgName->cursorPosition() > 0 && txt_imgAuthor->cursorPosition() > 0 && txt_imgDate->cursorPosition() > 0 &&
             txt_imgSize->cursorPosition() > 0 && txt_imgBrief->cursorPosition() > 0){
-        qDebug() << "Enviar información al Server";
+
+        qDebug() << tmpList;
+
+        QImage initial_image(fileName);
+        QByteArray ba;
+        QBuffer buffer(&ba);
+        buffer.open(QIODevice::WriteOnly);
+        initial_image.save(&buffer, "PNG");
+
+        ba = ba.toBase64();
+
+        QByteArray by = QByteArray::fromBase64(ba);
+        QImage final_image = QImage::fromData(by, "");
+    //    ui->img_preview->setPixmap(QPixmap::fromImage(final_image));
+
+        compress();
+
     } else{
         QMessageBox::warning(this, "Warning", "You must fill all the spaces.");
     }
 }
 
-void AddImages::convert(){
-    QImage initial_image(fileName);
-    QByteArray ba;
-    QBuffer buffer(&ba);
-    buffer.open(QIODevice::WriteOnly);
-    initial_image.save(&buffer, "PNG");
-
-    ba = ba.toBase64();
-
-    QByteArray by = QByteArray::fromBase64(ba);
-    QImage final_image = QImage::fromData(by, "");
-    ui->img_preview->setPixmap(QPixmap::fromImage(final_image));
-}
-
 void AddImages::compress(){
 
+    HuffmanCompression *hc = new HuffmanCompression();
+    ListBT *list = hc->compress(tmpList.toUtf8().toStdString());
+    list->sort();
+    list->print();
+    BinaryTree* bt = hc->order(list);
+    qDebug() << "cout3";
+
+    bt->traverseInOrder(bt->root);
+    qDebug() << "cout4";
+
+    qDebug() << QString::fromStdString(hc->decompress(bt,hc->compressedWord));
 }

@@ -15,7 +15,7 @@ QString JsonConverter::qListToJson(QList<JsonSerializable *> serializableList)
 
 
 template<class T>
-QList<T *> JsonConverter::jsonToQList(QString json)
+QList<T> JsonConverter::jsonToQList(QString json)
 {
     QList<T *> *list = new QList<T *>();
    QJsonArray jsonArray = stringToJsonArray(json);

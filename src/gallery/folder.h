@@ -1,15 +1,24 @@
 #ifndef FOLDER_H
 #define FOLDER_H
 
+#include <QJsonObject>
 #include <QList>
-#include "image.h"
 
-class Folder
+#include "image.h"
+#include "json/jsonserializable.h"
+#include "json/jsonconverter.h"
+
+class Folder : public JsonSerializable
 {
 public:
     Folder();
 
     Folder(QString id);
+
+    ~Folder();
+
+    void write(QJsonObject &jsonObj) const;
+    void read(const QJsonObject &jsonObj);
 
     QString getId() const;
     void setId(const QString &value);
@@ -22,8 +31,8 @@ public:
 
 private:
     QString id;
-    QList<Folder> subFolders;
-    QList<Image> images;
+    QList<Folder *> subFolders;
+    QList<Image *> images;
 };
 
 #endif // FOLDER_H

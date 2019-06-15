@@ -14,7 +14,7 @@ public:
     static QString qListToJson(QList<JsonSerializable *> serializableList);
 
     template<class T>
-    static QList<T *> jsonToQList(QString json);
+    static QList<T> jsonToQList(QString json);
 
 private:
     static QJsonArray stringToJsonArray(const QString &data);

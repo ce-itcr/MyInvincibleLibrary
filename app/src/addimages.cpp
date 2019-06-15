@@ -17,14 +17,15 @@ AddImages::~AddImages()
 void AddImages::configureWindow(){
 
     QPushButton *uploadImage = new QPushButton("UPLOAD IMAGE");
-    ui->gridLayout_2->addWidget(uploadImage,0,0,1,3);
+    ui->gridLayout_2->addWidget(uploadImage,0,0,1,4);
     connect(uploadImage, &QPushButton::clicked, this, &AddImages::uploadImages);
 
     QLabel *imgPath = new QLabel("Image Path: ");
     ui->gridLayout_2->addWidget(imgPath,1,0);
 
-    QPushButton *compressImage = new QPushButton("Compress");
-    ui->gridLayout_2->addWidget(compressImage,1,2);
+    QPushButton *convert = new QPushButton("Convert");
+    ui->gridLayout_2->addWidget(convert,1,3);
+    connect(convert, &QPushButton::clicked, this, &AddImages::convert);
 
     QLabel *imgName = new QLabel("Name:");
     txt_imgName = new QLineEdit;
@@ -60,12 +61,12 @@ void AddImages::uploadImages(){
     QFileDialog dialog(this);
     dialog.setNameFilter(tr("Images (*.png *.xpm *.jpg)"));
     dialog.setViewMode(QFileDialog::Detail);
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Images"), "/home/rpi/Desktop/Picture/Sample Pictures", tr("Image Files (*.png *.jpg *.bmp)"));
+    fileName = QFileDialog::getOpenFileName(this, tr("Open Images"), "/home/rpi/Desktop/Picture/Sample Pictures", tr("Image Files (*.png *.jpg *.bmp)"));
     int size = 0;
     QFileInfo imgFile(fileName);
     if (!fileName.isEmpty()){
         QImage image(fileName);
-        ui->img_preview->setPixmap(QPixmap::fromImage(image));
+//        ui->img_preview->setPixmap(QPixmap::fromImage(image));
 
         txt_imgName->setText(imgFile.fileName());
         txt_imgAuthor->setText(imgFile.owner());
@@ -92,4 +93,22 @@ void AddImages::ok_btn_sender(){
     } else{
         QMessageBox::warning(this, "Warning", "You must fill all the spaces.");
     }
+}
+
+void AddImages::convert(){
+    QImage initial_image(fileName);
+    QByteArray ba;
+    QBuffer buffer(&ba);
+    buffer.open(QIODevice::WriteOnly);
+    initial_image.save(&buffer, "PNG");
+
+    ba = ba.toBase64();
+
+    QByteArray by = QByteArray::fromBase64(ba);
+    QImage final_image = QImage::fromData(by, "");
+    ui->img_preview->setPixmap(QPixmap::fromImage(final_image));
+}
+
+void AddImages::compress(){
+
 }

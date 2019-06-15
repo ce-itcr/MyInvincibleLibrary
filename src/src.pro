@@ -27,12 +27,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         client/client.cpp \
         client/clientinterface.cpp \
-        src.cpp
+        src.cpp \
+    gallery/foldermanager.cpp \
+    gallery/folder.cpp \
+    gallery/image.cpp \
+    json/jsonserializer.cpp \
+    json/jsonconverter.cpp
 
 HEADERS += \
         client/client.h \
         client/clientinterface.h \
-        src.h
+        src.h \
+    gallery/foldermanager.h \
+    gallery/folder.h \
+    gallery/image.h \
+    json/jsonserializer.h \
+    json/jsonserializable.h \
+    json/jsonconverter.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

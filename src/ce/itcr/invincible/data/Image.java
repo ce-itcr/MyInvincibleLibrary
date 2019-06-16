@@ -14,16 +14,14 @@ public class Image {
 
     public Image() { }
 
-    public Image(int id, String parentId, String name, String author, int year, int size, String description, String metaData, String compressedData) {
-        this.id = id;
+    public Image(String parentId, String name, String author, int year, int size, String description) {
+        this.id = 0;
         this.parentId = parentId;
         this.name = name;
         this.author = author;
         this.year = year;
         this.size = size;
         this.description = description;
-        this.metaData = metaData;
-        this.compressedData = compressedData;
     }
 
     public int getId() {

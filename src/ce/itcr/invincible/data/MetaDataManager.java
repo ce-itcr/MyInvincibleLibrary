@@ -1,65 +1,59 @@
 package ce.itcr.invincible.data;
 
+import com.mongodb.Block;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+
 import java.util.*;
-import java.sql.*;
+import java.util.function.Consumer;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class MetaDataManager {
 
     private static MetaDataManager instance = new MetaDataManager();
-    private static final String DB_URL = "mongodb://localhost:27017/gallery";
+    private static final String DB_URL = "mongodb://localhost:27017";
+    private static final String DB_NAME = "gallery";
+    private static final String DB_COLLECTION = "images";
     private static final String USER = "username";
     private static final String PASS = "password";
-    private Connection connection;
+    private MongoCollection<Document> mongoCollection;
+    List<Image> images = new ArrayList<>();
 
     private MetaDataManager() {
-        connect();
+        MongoClient mongoClient = MongoClients.create(DB_URL);
+        MongoDatabase mongoDatabase = mongoClient.getDatabase(DB_NAME);
+        mongoCollection = mongoDatabase.getCollection(DB_COLLECTION);
     }
 
     public static MetaDataManager getInstance() {
         return instance;
     }
 
-    public boolean INSERT(List<Image> images) throws SQLException {
-        Statement statement = connection.createStatement();
-        String sql;
-        ResultSet response = null;
+    public List<Image> SELECT(String folderId) {
+        images.clear();
 
-        int cont=0;
-        while(images.size() > cont) {
-            sql = "INSERT INTO images " +
-                    "VALUES (images[cont].parentId, images[cont].name, images[cont].author," +
-                    "images[cont].year, images[cont].size, images[cont].description, images[cont].metaData)";
-            response = statement.executeQuery(sql);
-            cont++;
-        }
+        // Makes request and process
+        Consumer<Document> consumer = this::createImage;
+        mongoCollection.find(eq("parentId", folderId)).forEach(consumer);
 
-        if (response != null) response.close();
-        statement.close();
-        return true;
-    }
-
-    public List<Image> SELECT(List<String> imagesId) throws SQLException {
-        Statement statement = connection.createStatement();
-        String sql;
-        ResultSet response = null;
-        List<Image> images = new ArrayList<>();
-
-        int cont=0;
-        while(imagesId.size() > cont) {
-            sql = "SELECT ID, PARENT_ID, NAME, AUTHOR, YEAR, SIZE, DESCRIPTION" +
-                    " FROM images" +
-                    " WHERE ID = " + imagesId.get(cont);
-            response = statement.executeQuery(sql);
-            images.add(createImage(response));
-            cont++;
-        }
-
-        if (response != null) response.close();
-        statement.close();
         return images;
     }
 
-    public boolean DELETE(List<String> imagesId) throws SQLException {
+    public boolean INSERT(List<Image> images) {
+        List<Document> documents = new ArrayList<>();
+        for (Image image : images) {
+            documents.add(createDocument(image));
+        }
+        mongoCollection.insertMany(documents);
+        return true;
+    }
+
+    /**
+    public boolean DELETE(List<String> imagesId) {
         Statement statement = connection.createStatement();
         String sql;
         ResultSet response = null;
@@ -77,7 +71,7 @@ public class MetaDataManager {
         return true;
     }
 
-    public List<Image> UPDATE(List<Image> images) throws SQLException {
+    public List<Image> UPDATE(List<Image> images) {
         Statement statement = connection.createStatement();
         String sql;
         ResultSet response = null;
@@ -109,31 +103,32 @@ public class MetaDataManager {
 
     public static String getPASS() {
         return PASS;
-    }
+    }**/
 
-
-
-    private void connect() {
-        try {
-             connection = DriverManager.getConnection(DB_URL, USER, PASS);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private Image createImage(ResultSet response) throws SQLException {
-        int id = Integer.parseInt(response.getString("ID"));
-        String parentId = response.getString("PARENT_ID");
-        String name = response.getString("NAME");
-        String author = response.getString("AUTHOR");
-        int year = Integer.parseInt(response.getString("YEAR"));
-        int size = Integer.parseInt(response.getString("SIZE"));
-        String description = response.getString("DESCRIPTION");
-        String metaData = response.getString("META_DATA");
+    private void createImage(Document response) {
+        String id = response.getObjectId("_id").toString();
+        String parentId = response.getString("parentId");
+        String name = response.getString("name");
+        String author = response.getString("author");
+        int year = response.getInteger("year");
+        int size = response.getInteger("size");
+        String description = response.getString("description");
+        String metaData = response.getString("metaData");
 
         Image image = new Image(parentId, name, author, year, size, description);
         image.setId(id);
         image.setMetaData(metaData);
-        return image;
+
+        images.add(image);
+    }
+
+    private Document createDocument(Image image) {
+        return new Document("parentId", image.getParentId())
+                .append("name", image.getName())
+                .append("author", image.getAuthor())
+                .append("year", image.getYear())
+                .append("size", image.getSize())
+                .append("description", image.getDescription())
+                .append("metaData", image.getMetaData());
     }
 }

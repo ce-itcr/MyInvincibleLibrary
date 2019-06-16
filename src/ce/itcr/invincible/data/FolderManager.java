@@ -1,5 +1,8 @@
 package ce.itcr.invincible.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FolderManager {
 
     private static FolderManager instance = new FolderManager();
@@ -10,23 +13,24 @@ public class FolderManager {
         return instance;
     }
 
-    public String getFolders(String folderId) {
+    public List<Image> getFolders(String folderId) {
+        List<Image> images;
+        List<Image> imagesMD;
+        List<Image> imagesR5;
 
-        /// ****Cambiar a parseo**** ///
-        //metaDataManager.SELECT();
+        images = metaDataManager.SELECT(folderId);
+        //raidManager.seek(folderId);
+        //raidManager.read();
 
-//        raidManager.seek(folderId);
-//        raidManager.read();
-
-        return "";
+        return images;
     }
 
-    public boolean createFolders(int folderId, String folders) {
-        return false;
+    public boolean createFolders(int folderId, List<Image> images) {
+        return metaDataManager.INSERT(images);
     }
 
-    public String modifiedFolders(String folderId, String folders) {
-        return "";
+    public List<Image>  modifiedFolders(String folderId, List<Image> images) {
+        return null;
     }
 
     public boolean deleteFolders(String folderId) {

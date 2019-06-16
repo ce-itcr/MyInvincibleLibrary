@@ -1,6 +1,9 @@
 package ce.itcr.invincible.ws.res;
 
 import ce.itcr.invincible.data.FolderManager;
+import ce.itcr.invincible.data.Image;
+
+import java.util.List;
 
 class FoldersService {
 
@@ -11,16 +14,16 @@ class FoldersService {
         return instance;
     }
 
-    String getFolders(String folderId) {
+    List<Image> getFolders(String folderId) {
         return manager.getFolders(folderId);
     }
 
-    boolean putFolders(int folderId, String folders) {
-        return manager.createFolders(folderId, folders);
+    boolean putFolders(int folderId, List<Image> images) {
+        return manager.createFolders(folderId, images);
     }
 
-    String postFolders(String folderId, String folders) {
-        return manager.modifiedFolders(folderId, folders);
+    List<Image>  postFolders(String folderId, List<Image> images) {
+        return manager.modifiedFolders(folderId, images);
     }
 
     boolean deleteFolders(String folderId) {

@@ -26,6 +26,40 @@
           </option>
           <option name="userDatabase" value="gallery" />
         </ServerConfiguration>
+        <ServerConfiguration>
+          <option name="label" value="MyInvincibleDB" />
+          <option name="serverUrls">
+            <list>
+              <option value="localhost:27017" />
+            </list>
+          </option>
+          <option name="sshTunnelingConfiguration">
+            <SshTunnelingConfiguration />
+          </option>
+        </ServerConfiguration>
+        <ServerConfiguration>
+          <option name="label" value="MyInvincibleDB" />
+          <option name="serverUrls">
+            <list>
+              <option value="localhost:27017" />
+            </list>
+          </option>
+          <option name="sshTunnelingConfiguration">
+            <SshTunnelingConfiguration />
+          </option>
+        </ServerConfiguration>
+        <ServerConfiguration>
+          <option name="label" value="MyInvincibleDB" />
+          <option name="serverUrls">
+            <list>
+              <option value="localhost:27017" />
+            </list>
+          </option>
+          <option name="sshTunnelingConfiguration">
+            <SshTunnelingConfiguration />
+          </option>
+          <option name="userDatabase" value="gallery" />
+        </ServerConfiguration>
       </list>
     </option>
     <option name="shellPath" value="C:\Program Files\MongoDB\Server\4.0\bin\mongo.exe" />

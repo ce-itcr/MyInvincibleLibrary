@@ -1,8 +1,11 @@
 package ce.itcr.invincible.ws.res;
 
+import ce.itcr.invincible.data.Image;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Path("/folders")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -14,7 +17,7 @@ public class FoldersResource {
     @GET
     @Path("/{folderId}")
     public Response getImages(@PathParam("folderId") String folderId) {
-        String data = folders.getFolders(folderId);
+        List<Image> data = folders.getFolders(folderId);
 
         Response.ResponseBuilder builder = Response.ok(data);
         builder.header("folder-id:", folderId);
@@ -25,8 +28,8 @@ public class FoldersResource {
 
     @PUT
     @Path("/{folderId}")
-    public Response putImages(@PathParam("folderId") int folderId, String data) {
-        boolean status = folders.putFolders(folderId, data);
+    public Response putImages(@PathParam("folderId") int folderId, List<Image> images) {
+        boolean status = folders.putFolders(folderId, images);
 
         Response.ResponseBuilder builder = Response.ok();
         builder.header("folder-id:", folderId);
@@ -37,8 +40,8 @@ public class FoldersResource {
 
     @POST
     @Path("/{folderId}")
-    public Response postImages(@PathParam("folderId") String folderId, String message) {
-        String data = folders.postFolders(folderId, message);
+    public Response postImages(@PathParam("folderId") String folderId, List<Image> images) {
+        List<Image>  data = folders.postFolders(folderId, images);
 
         Response.ResponseBuilder builder = Response.ok(data);
         builder.header("folder-id:", folderId);

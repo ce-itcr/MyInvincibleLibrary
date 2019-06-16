@@ -13,4 +13,8 @@ public class Serializer {
     public static List<String> fromFolderToImageId() {
         return null;
     }
+
+    public static String fromImagestoJson(List<Image> images) {
+        return "";
+    }
 }

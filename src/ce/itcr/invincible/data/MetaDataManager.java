@@ -6,10 +6,9 @@ import java.sql.*;
 public class MetaDataManager {
 
     private static MetaDataManager instance = new MetaDataManager();
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/EMP";
-    static final String USER = "username";
-    static final String PASS = "password";
+    private static final String DB_URL = "mongodb://localhost:27017/gallery";
+    private static final String USER = "username";
+    private static final String PASS = "password";
     private Connection connection;
 
     private MetaDataManager() {
@@ -42,6 +41,18 @@ public class MetaDataManager {
         return false;
     }
 
+    public static String getDbUrl() {
+        return DB_URL;
+    }
+
+    public static String getUSER() {
+        return USER;
+    }
+
+    public static String getPASS() {
+        return PASS;
+    }
+
     private void connect() {
         try {
              connection = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -49,6 +60,4 @@ public class MetaDataManager {
             e.printStackTrace();
         }
     }
-
-    //(INSERT, SELECT, DELETE y UPDATE)
 }

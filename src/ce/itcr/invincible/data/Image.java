@@ -2,7 +2,8 @@ package ce.itcr.invincible.data;
 
 public class Image {
 
-    private String id;
+    private int id;
+    private String parentId;
     private String name;
     private String author;
     private int year;
@@ -13,8 +14,9 @@ public class Image {
 
     public Image() { }
 
-    public Image(String id, String name, String author, int year, int size, String description, String metaData, String compressedData) {
+    public Image(int id, String parentId, String name, String author, int year, int size, String description, String metaData, String compressedData) {
         this.id = id;
+        this.parentId = parentId;
         this.name = name;
         this.author = author;
         this.year = year;
@@ -24,12 +26,20 @@ public class Image {
         this.compressedData = compressedData;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
     public String getName() {

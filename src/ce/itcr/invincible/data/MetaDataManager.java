@@ -62,7 +62,7 @@ public class MetaDataManager {
     public List<Image> UPDATE(String folderId, List<Image> images) {
         for (Image image : images) {
             mongoCollection.updateOne(eq("_id", new ObjectId(image.getId())),
-                    combine(set("parentId", image.getParentId()),
+                    combine(set("parentId", folderId),
                             set("name", image.getName()),
                             set("author", image.getAuthor()),
                             set("year", image.getYear()),

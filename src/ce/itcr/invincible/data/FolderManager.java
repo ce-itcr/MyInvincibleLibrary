@@ -1,6 +1,5 @@
 package ce.itcr.invincible.data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FolderManager {
@@ -25,15 +24,15 @@ public class FolderManager {
         return images;
     }
 
-    public boolean createFolders(int folderId, List<Image> images) {
-        return metaDataManager.INSERT(images);
+    public boolean createFolders(String folderId, List<Image> images) {
+        return metaDataManager.INSERT(folderId, images);
     }
 
     public List<Image>  modifiedFolders(String folderId, List<Image> images) {
-        return null;
+        return metaDataManager.UPDATE(folderId, images);
     }
 
     public boolean deleteFolders(String folderId) {
-        return false;
+        return metaDataManager.DELETE(folderId);
     }
 }

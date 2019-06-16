@@ -1,16 +1,18 @@
 package ce.itcr.invincible.data;
 
-import com.mongodb.Block;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.util.*;
 import java.util.function.Consumer;
 
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.combine;
+import static com.mongodb.client.model.Updates.set;
 
 public class MetaDataManager {
 
@@ -21,7 +23,7 @@ public class MetaDataManager {
     private static final String USER = "username";
     private static final String PASS = "password";
     private MongoCollection<Document> mongoCollection;
-    List<Image> images = new ArrayList<>();
+    private List<Image> images = new ArrayList<>();
 
     private MetaDataManager() {
         MongoClient mongoClient = MongoClients.create(DB_URL);
@@ -43,54 +45,32 @@ public class MetaDataManager {
         return images;
     }
 
-    public boolean INSERT(List<Image> images) {
+    public boolean INSERT(String folderId, List<Image> images) {
         List<Document> documents = new ArrayList<>();
         for (Image image : images) {
-            documents.add(createDocument(image));
+            documents.add(createDocument(folderId, image));
         }
         mongoCollection.insertMany(documents);
         return true;
     }
 
-    /**
-    public boolean DELETE(List<String> imagesId) {
-        Statement statement = connection.createStatement();
-        String sql;
-        ResultSet response = null;
-
-        int cont=0;
-        while(imagesId.size() > cont) {
-            sql = "DELETE FROM images " +
-                    "WHERE id = imagesId[cont].Id";
-            response = statement.executeQuery(sql);
-            cont++;
-        }
-
-        if (response != null) response.close();
-        statement.close();
+    public boolean DELETE(String folderId) {
+        mongoCollection.deleteMany(eq("parentId", folderId));
         return true;
     }
 
-    public List<Image> UPDATE(List<Image> images) {
-        Statement statement = connection.createStatement();
-        String sql;
-        ResultSet response = null;
-        List<Image> newImages = new ArrayList<>();
-
-        int cont = 0;
-        while (images.size() > cont) {
-            sql = "UPDATE images " +
-                    "SET parentId = images[cont].parentId, name = images[cont].name, author = images[cont].author, year = images[cont].year," +
-                    " size = images[cont].size, description = images[cont].description, metaData = images[cont].metaData," +
-                    " compressedData = images[cont].compressedData";
-            response = statement.executeQuery(sql);
-            newImages.add(createImage(response));
-            cont++;
+    public List<Image> UPDATE(String folderId, List<Image> images) {
+        for (Image image : images) {
+            mongoCollection.updateOne(eq("_id", new ObjectId(image.getId())),
+                    combine(set("parentId", image.getParentId()),
+                            set("name", image.getName()),
+                            set("author", image.getAuthor()),
+                            set("year", image.getYear()),
+                            set("size", image.getSize()),
+                            set("description", image.getDescription()),
+                            set("metaData", image.getMetaData())));
         }
-
-        if (response != null) response.close();
-        statement.close();
-        return newImages;
+        return SELECT(folderId);
     }
 
     public static String getDbUrl() {
@@ -103,7 +83,7 @@ public class MetaDataManager {
 
     public static String getPASS() {
         return PASS;
-    }**/
+    }
 
     private void createImage(Document response) {
         String id = response.getObjectId("_id").toString();
@@ -122,8 +102,8 @@ public class MetaDataManager {
         images.add(image);
     }
 
-    private Document createDocument(Image image) {
-        return new Document("parentId", image.getParentId())
+    private Document createDocument(String folderId, Image image) {
+        return new Document("parentId", folderId)
                 .append("name", image.getName())
                 .append("author", image.getAuthor())
                 .append("year", image.getYear())

@@ -18,7 +18,7 @@ class FoldersService {
         return manager.getFolders(folderId);
     }
 
-    boolean putFolders(int folderId, List<Image> images) {
+    boolean putFolders(String folderId, List<Image> images) {
         return manager.createFolders(folderId, images);
     }
 

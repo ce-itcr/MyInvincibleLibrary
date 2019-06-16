@@ -28,7 +28,7 @@ public class FoldersResource {
 
     @PUT
     @Path("/{folderId}")
-    public Response putImages(@PathParam("folderId") int folderId, List<Image> images) {
+    public Response putImages(@PathParam("folderId") String folderId, List<Image> images) {
         boolean status = folders.putFolders(folderId, images);
 
         Response.ResponseBuilder builder = Response.ok();

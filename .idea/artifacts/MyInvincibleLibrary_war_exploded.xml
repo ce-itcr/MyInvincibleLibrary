@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="MyInvincibleLibrary:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/MyInvincibleLibrary_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="MyInvincibleLibrary" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="org.glassfish.jersey.core:jersey-server:2.28" />
+          <element id="library" level="project" name="org.mongodb:mongo-java-driver:3.10.2" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="MyInvincibleLibrary/web/Web" />
+    </root>
+  </artifact>
+</component>

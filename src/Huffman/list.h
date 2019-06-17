@@ -1,11 +1,11 @@
-#ifndef  LISTBT_H
-#define  LISTBT_H
+#ifndef LIST_H
+#define LIST_H
 
-#include "ListNode.h"
+#include "listnode.h"
 
-class ListBT {
+class List{
 public:
-    ListBT();
+    List();
 
     void add_head(int frecuency, string name);
     void add_end(int frecuency, string name);
@@ -24,5 +24,4 @@ public:
     int getM_num_nodes() const;
 };
 
-
-#endif // LISTBT_H
+#endif // LIST_H

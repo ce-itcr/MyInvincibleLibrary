@@ -1,11 +1,11 @@
-#ifndef  BINARYTREENODE_H
-#define  BINARYTREENODE_H
+#ifndef BINARYTREENODE_H
+#define BINARYTREENODE_H
 
 #include <iostream>
 
 using namespace std;
 
-class BinaryTreeNode {
+class BinaryTreeNode{
 private:
     string name;
     int frecuency;
@@ -31,6 +31,5 @@ public:
 
     BinaryTreeNode(string name, int frecuency);
 };
-
 
 #endif // BINARYTREENODE_H

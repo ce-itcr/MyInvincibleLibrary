@@ -1,12 +1,11 @@
-#ifndef  LISTNODE_H
-#define  LISTNODE_H
+#ifndef LISTNODE_H
+#define LISTNODE_H
 
 #include <iostream>
 
 using namespace std;
 
-
-class ListNode {
+class ListNode{
 public:
 
     ListNode(int frecuency, string name);
@@ -19,6 +18,5 @@ public:
     void delete_all();
     void print();
 };
-
 
 #endif // LISTNODE_H

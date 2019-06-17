@@ -4,9 +4,9 @@
 #include <QDialog>
 #include <QtWidgets>
 
-#include "Huffman/HuffmanCompression.h"
-#include "Huffman/BinaryTree.h"
-#include "Huffman/ListBT.h"
+#include "Huffman/huffmancompression.h"
+#include "Huffman/binarytree.h"
+#include "Huffman/list.h"
 
 namespace Ui {
 class AddImages;

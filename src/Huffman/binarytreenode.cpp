@@ -1,4 +1,4 @@
-#include "BinaryTreeNode.h"
+#include "binarytreenode.h"
 
 BinaryTreeNode *BinaryTreeNode::getLeft() const {
     return left;

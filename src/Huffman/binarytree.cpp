@@ -1,5 +1,4 @@
-#include "BinaryTree.h"
-
+#include "binarytree.h"
 
 bool BinaryTree::isEmpty() {
     return root == nullptr;
@@ -16,15 +15,13 @@ void BinaryTree::addNode(int frecuency, string name,ListNode *node) {
 }
 
 BinaryTreeNode* BinaryTree::addNode(BinaryTreeNode *currentNode,int frecuency, string name,ListNode *node) {
-    cout << "w" << endl;
     bool goRight = false;
-    cout << "ww" << endl;
+
     if (isEmpty()) {
 
         return new BinaryTreeNode(name, frecuency);
 
     }else{
-            cout << "www" << endl;
         if (currentNode == nullptr) {
 
             return new BinaryTreeNode(name, frecuency);
@@ -110,5 +107,16 @@ void BinaryTree::traverseInOrder(BinaryTreeNode* node) {
         string hsdak = node->getName();
         cout << node->getName() << endl;
         traverseInOrder(node->getRight());
+    }
+}
+
+void BinaryTree::deleteAll(BinaryTreeNode *currentNode){
+    if(currentNode != nullptr){
+        deleteAll(currentNode->getLeft());
+        deleteAll(currentNode->getRight());
+        currentNode->setFrecuency(NULL);
+        currentNode->setName("");
+        currentNode = nullptr;
+        delete currentNode;
     }
 }

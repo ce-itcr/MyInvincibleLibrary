@@ -1,13 +1,13 @@
-#include "ListBT.h"
+#include "list.h"
 
 // Constructor por defecto
-ListBT::ListBT(){
+List::List(){
     m_num_nodes = 0;
     m_head = NULL;
 }
 
 // Insertar al inicio
-void  ListBT::add_head(int frecuency, string name) {
+void List::add_head(int frecuency, string name) {
     ListNode *new_node = new ListNode(frecuency, name);
     ListNode *temp = m_head;
 
@@ -24,7 +24,7 @@ void  ListBT::add_head(int frecuency, string name) {
     m_num_nodes++;
 }
 
-void  ListBT::add_end(int frecuency, string name)
+void List::add_end(int frecuency, string name)
 {
     ListNode *new_node = new ListNode (frecuency, name);
     ListNode *temp = m_head;
@@ -41,12 +41,12 @@ void  ListBT::add_end(int frecuency, string name)
 }
 
 // Eliminar todos los nodos
-void  ListBT::del_all(){
+void List::del_all(){
     m_head->delete_all();
     m_head = 0;
 }
 
-void  ListBT::del_by_data(string name)
+void List::del_by_data(string name)
 {
     ListNode *temp = m_head;
     ListNode *temp1 = m_head->next;
@@ -70,7 +70,7 @@ void  ListBT::del_by_data(string name)
     }
 }
 
-void  ListBT::del_first_two(ListNode *node) {
+void List::del_first_two(ListNode *node) {
     ListNode *tempNode = m_head;
     m_head = m_head->next;
     tempNode = nullptr;
@@ -82,7 +82,7 @@ void  ListBT::del_first_two(ListNode *node) {
 
 
 // Imprimir la Lista
-void  ListBT::print(){
+void List::print(){
     ListNode *temp = m_head;
     if (!m_head) {
         cout << "La Lista está vacía " << endl;
@@ -98,7 +98,7 @@ void  ListBT::print(){
 
 // Buscar el dato de un nodo
 
-bool  ListBT::search(string name){
+bool List::search(string name){
     ListNode *temp = m_head;
 
     while (temp) {
@@ -114,7 +114,7 @@ bool  ListBT::search(string name){
     return false;
 }
 
-void  ListBT::sort()
+void List::sort()
 {
     int tempFrecuency;
     string tempName;
@@ -147,11 +147,11 @@ void  ListBT::sort()
     }
 }
 
-int  ListBT::getM_num_nodes() const {
+int List::getM_num_nodes() const {
     return m_num_nodes;
 }
 
-string  ListBT::find(string letter){
+string List::find(string letter){
     ListNode *tempNode = m_head;
     while(tempNode){
         if(tempNode->name == letter){
@@ -159,4 +159,4 @@ string  ListBT::find(string letter){
         }
         tempNode = tempNode->next;
     }
-};
+}

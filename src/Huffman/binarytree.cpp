@@ -89,6 +89,16 @@ BinaryTreeNode* BinaryTree::addNode(BinaryTreeNode *currentNode,int frecuency, s
     }
 }
 
+BinaryTreeNode *BinaryTree::getRoot() const
+{
+    return root;
+}
+
+void BinaryTree::setRoot(BinaryTreeNode *value)
+{
+    root = value;
+}
+
 bool BinaryTree::containsElement(BinaryTreeNode* node,string name) {
     bool exist;
     if (node != nullptr) {
@@ -119,4 +129,12 @@ void BinaryTree::deleteAll(BinaryTreeNode *currentNode){
         currentNode = nullptr;
         delete currentNode;
     }
+}
+
+void BinaryTree::write(QJsonObject &jsonObj) const{
+    jsonObj["root"] = JsonSerializer::serialize(*root);
+}
+
+void BinaryTree::read(const QJsonObject &jsonObj){
+    JsonSerializer::parse(jsonObj["root"].toString(),*root);
 }

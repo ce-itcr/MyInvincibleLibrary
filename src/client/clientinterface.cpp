@@ -1,6 +1,7 @@
 #include "clientinterface.h"
 
-Client *ClientInterface::client = Client::getInstance()->initHost("192.168.0.27", "9080", "MyIncibleLibrary_war_exploded");
+Client *ClientInterface::client = nullptr;
+
 QString ClientInterface::foldersPath = "/folders/";
 
 void ClientInterface::getFolders(QString folderId)

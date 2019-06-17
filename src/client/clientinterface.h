@@ -7,6 +7,8 @@
 class ClientInterface
 {
 public:
+    static Client *client;
+
     static void getFolders(QString folderId);
 
     static void createFolders(QString folderId, QString jsonFolder);
@@ -16,7 +18,6 @@ public:
     static void deleteFolders(QString folderId);
 
 private:
-    static Client *client;
     static QString foldersPath;
 };
 

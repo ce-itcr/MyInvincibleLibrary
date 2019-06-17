@@ -3,11 +3,13 @@
 
 #include <QDialog>
 #include <QtWidgets>
+#include <QList>
 
 #include "Huffman/huffmancompression.h"
 #include "Huffman/binarytree.h"
 #include "Huffman/list.h"
 #include "gallery/image.h"
+#include "client/clientinterface.h"
 
 namespace Ui {
 class AddImages;
@@ -27,7 +29,7 @@ private:
 
     QString fileName;
     QString tmpList;
-    List tmpQList;
+    QList<JsonSerializable*> tmpQList;
 
     QLineEdit* txt_imgDate;
     QLineEdit* txt_imgSize;
@@ -36,7 +38,6 @@ private:
     QLineEdit* txt_imgBrief;
 
     QLabel *path;
-
     void uploadImages();
     void ok_btn_sender();
     void compress();

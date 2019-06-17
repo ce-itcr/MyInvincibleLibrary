@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer *dateTimer = new QTimer(this);
     connect(dateTimer, SIGNAL(timeout()), this, SLOT(showDate()));
     dateTimer->start();
+    ClientInterface::client = Client::getInstance()->initHost("192.168.0.27", "9080", "MyIncibleLibrary_war_exploded");
 }
 
 MainWindow::~MainWindow()

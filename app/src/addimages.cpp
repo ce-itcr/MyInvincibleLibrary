@@ -95,6 +95,10 @@ void AddImages::ok_btn_sender(){
         tmpList.append(txt_imgBrief->text());
         path->clear();
 
+//        tmpQList.append(imageManager);
+        JsonSerializable *testjson = imageManager;
+        tmpQList.append(testjson);
+
         setImageData();
 
         QImage initial_image(fileName);
@@ -112,7 +116,6 @@ void AddImages::ok_btn_sender(){
 
         compress();
 
-
         tmpList.clear();
 
     } else{
@@ -127,9 +130,15 @@ void AddImages::compress(){
     list->sort();
     list->print();
     BinaryTree* bt = hc->order(list);
+    cout << "q1" << endl;
     QJsonDocument doc(JsonSerializer::serialize(*bt));
+    cout << "q2" << endl;
     QString data = doc.toJson(QJsonDocument::Compact);
+    cout << "q3" << endl;
     imageManager->setMetadata(data);
+    QString dataStr = JsonConverter::qListToJson(tmpQList);
+
+    ClientInterface::createFolders("0", dataStr);
 
 //    imageManager->setMetadata(JsonSerializer::serialize(*bt));
 //    qDebug() << QString::fromStdString(hc->decompress(bt,hc->compressedWord));

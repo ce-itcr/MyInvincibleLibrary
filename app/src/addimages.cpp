@@ -119,14 +119,9 @@ void AddImages::ok_btn_sender(){
 void AddImages::compress(){
 
     HuffmanCompression *hc = new HuffmanCompression();
-    ListBT *list = hc->compress(tmpList.toUtf8().toStdString());
+    List *list = hc->compress("tmpList.toUtf8().toStdString()");
     list->sort();
     list->print();
     BinaryTree* bt = hc->order(list);
-    qDebug() << "cout3";
-
-    bt->traverseInOrder(bt->root);
-    qDebug() << "cout4";
-
     qDebug() << QString::fromStdString(hc->decompress(bt,hc->compressedWord));
 }

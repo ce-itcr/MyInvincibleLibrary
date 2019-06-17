@@ -35,4 +35,6 @@ void BinaryTreeNode::setFrecuency(int frecuency) {
 BinaryTreeNode::BinaryTreeNode(string name, int frecuency) {
     this->name = name;
     this->frecuency = frecuency;
+    this->right = nullptr;
+    this->left = nullptr;
 }

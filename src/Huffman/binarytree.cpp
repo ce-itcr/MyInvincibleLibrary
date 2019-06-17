@@ -10,7 +10,7 @@ void BinaryTree::addNode(int frecuency, string name,ListNode *node) {
     }
     else {
         root = addNode(root,frecuency,name,node);
-//        cout << "Nodo " + name + " agregado" << endl;
+        cout << "Nodo " + name + " agregado" << endl;
     }
 }
 

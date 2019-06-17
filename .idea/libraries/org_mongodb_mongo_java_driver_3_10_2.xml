@@ -3,6 +3,7 @@
     <properties maven-id="org.mongodb:mongo-java-driver:3.10.2" />
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/mongo/mongo-java-driver-3.10.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey/javax.ws.rs-api-2.1.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

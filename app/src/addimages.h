@@ -32,6 +32,8 @@ private:
     QLineEdit* txt_imgName;
     QLineEdit* txt_imgBrief;
 
+    QLabel *path;
+
     void uploadImages();
     void ok_btn_sender();
     void compress();

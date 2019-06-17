@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     appBrowser();
     buttonsInfo();
+    frameStyle();
 
     QTimer *dateTimer = new QTimer(this);
     connect(dateTimer, SIGNAL(timeout()), this, SLOT(showDate()));
@@ -65,14 +66,22 @@ void MainWindow::buttonsInfo(){
 //    connect(uploadFiles, &QAction::triggered, this, &MainWindow::uploadFiles);
 //    connect(uploadFolders, &QAction::triggered, this, &MainWindow::uploadFiles);
     connect(uploadFiles, &QAction::triggered, this, &MainWindow::addImages);
+}
 
+void MainWindow::frameStyle(){
 }
 
 void MainWindow::on_filesView_button_clicked()
 {
     QIcon icon;
-    if ((view % 2) == 0) icon.addFile(":/img/assets/grid.png");
-    else icon.addFile(":/img/assets/list.png");
+    if ((view % 2) == 0){
+        icon.addFile(":/img/assets/list.png");
+        // List View
+
+    } else{
+        icon.addFile(":/img/assets/grid.png");
+        // Grid View (DEFAULT)
+    }
     ui->filesView_button->setIcon(icon);
     view ++;
 }
@@ -80,8 +89,16 @@ void MainWindow::on_filesView_button_clicked()
 void MainWindow::on_filesSort_button_clicked()
 {
     QIcon icon;
-    if ((sort % 2) == 0) icon.addFile(":/img/assets/downArrow.png");
-    else icon.addFile(":/img/assets/upArrow.png");
+    if ((sort % 2) == 0){
+        icon.addFile(":/img/assets/downArrow.png");
+        // Up to Down Sort
+
+
+    } else{
+        icon.addFile(":/img/assets/upArrow.png");
+        // Down to Up Sort (Default)
+
+    }
     ui->filesSort_button->setIcon(icon);
     sort++;
 }

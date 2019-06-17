@@ -32,6 +32,7 @@ private:
     void uploadFiles();
     void uploadFilesAux();
     void addImages();
+    void frameStyle();
     int view = 0;
     int sort = 0;
     int refresh = 0;

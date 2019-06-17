@@ -221,7 +221,7 @@ QPushButton:hover{
       <x>210</x>
       <y>140</y>
       <width>991</width>
-      <height>671</height>
+      <height>661</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -234,17 +234,17 @@ border-radius: 10px;</string>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QWidget" name="gridLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>971</width>
-       <height>641</height>
-      </rect>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="leftMargin">
+      <number>10</number>
      </property>
-     <layout class="QGridLayout" name="gridLayout"/>
-    </widget>
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+    </layout>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -329,7 +329,7 @@ QPushButton:hover{
     </property>
     <property name="icon">
      <iconset resource="imgresources.qrc">
-      <normaloff>:/img/assets/list.png</normaloff>:/img/assets/list.png</iconset>
+      <normaloff>:/img/assets/grid.png</normaloff>:/img/assets/grid.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="filesSort_button">

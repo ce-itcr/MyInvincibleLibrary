@@ -65,26 +65,20 @@ void AddImages::uploadImages(){
         ui->img_preview->setPixmap(QPixmap::fromImage(image));
 
         txt_imgName->setText(imgFile.fileName());
-        tmpList.append(imgFile.fileName() + ";");
         txt_imgAuthor->setText(imgFile.owner());
-        tmpList.append(imgFile.owner() + ";");
 
-        QLabel *path = new QLabel(fileName);
+        path = new QLabel(fileName);
         ui->gridLayout_2->addWidget(path,1,1);
 
         QDateTime dateTime = QDateTime::currentDateTime();
         QString dateTimeText = dateTime.toString();
         txt_imgDate->setText(dateTimeText);
         ui->gridLayout->addWidget(txt_imgDate,2,1);
-//        tmpList.append(dateTimeText + ";");
 
         size = imgFile.size();
         txt_imgSize->setText(QString::number(size) + " bytes");
-        tmpList.append(QString::number(size) + ";");
-
 
         txt_imgBrief->setText(imgFile.absoluteFilePath());
-        tmpList.append(imgFile.absoluteFilePath());
 
     }
 }
@@ -92,6 +86,13 @@ void AddImages::uploadImages(){
 void AddImages::ok_btn_sender(){
     if(txt_imgName->cursorPosition() > 0 && txt_imgAuthor->cursorPosition() > 0 && txt_imgDate->cursorPosition() > 0 &&
             txt_imgSize->cursorPosition() > 0 && txt_imgBrief->cursorPosition() > 0){
+
+        tmpList.append(txt_imgName->text() + ";");
+        tmpList.append(txt_imgAuthor->text() + ";");
+        tmpList.append(txt_imgDate->text() + ";");
+        tmpList.append(txt_imgSize->text() + ";");
+        tmpList.append(txt_imgBrief->text());
+        path->clear();
 
         qDebug() << tmpList;
 
@@ -105,9 +106,10 @@ void AddImages::ok_btn_sender(){
 
         QByteArray by = QByteArray::fromBase64(ba);
         QImage final_image = QImage::fromData(by, "");
-    //    ui->img_preview->setPixmap(QPixmap::fromImage(final_image));
 
         compress();
+
+        tmpList.clear();
 
     } else{
         QMessageBox::warning(this, "Warning", "You must fill all the spaces.");

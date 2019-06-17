@@ -5,8 +5,8 @@ Image::Image()
     id = "";
     parentId = "";
     name = "";
-    autor = "";
-    year = "";
+    author = "";
+    date = "";
     size = 0;
     description = "";
 }
@@ -16,8 +16,8 @@ Image::Image(QString id, QString parentId)
     this->id = id;
     this->parentId = parentId;
     name = "";
-    autor = "";
-    year = "";
+    author = "";
+    date = "";
     size = 0;
     description = "";
 }
@@ -64,24 +64,24 @@ void Image::setName(const QString &value)
     name = value;
 }
 
-QString Image::getAutor() const
+QString Image::getAuthor() const
 {
-    return autor;
+    return author;
 }
 
-void Image::setAutor(const QString &value)
+void Image::setAuthor(const QString &value)
 {
-    autor = value;
+    author = value;
 }
 
-QString Image::getYear() const
+QString Image::getDate() const
 {
-    return year;
+    return date;
 }
 
-void Image::setYear(const QString &value)
+void Image::setDate(const QString &value)
 {
-    year = value;
+    date = value;
 }
 
 int Image::getSize() const

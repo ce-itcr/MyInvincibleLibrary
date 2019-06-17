@@ -25,11 +25,11 @@ public:
     QString getName() const;
     void setName(const QString &value);
 
-    QString getAutor() const;
-    void setAutor(const QString &value);
+    QString getAuthor() const;
+    void setAuthor(const QString &value);
 
-    QString getYear() const;
-    void setYear(const QString &value);
+    QString getDate() const;
+    void setDate(const QString &value);
 
     int getSize() const;
     void setSize(int value);
@@ -41,8 +41,8 @@ private:
     QString id;
     QString parentId;
     QString name;
-    QString autor;
-    QString year;
+    QString author;
+    QString date;
     int size;
     QString description;
 };

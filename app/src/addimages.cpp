@@ -7,6 +7,7 @@ AddImages::AddImages(QWidget *parent) :
 {
     ui->setupUi(this);
     configureWindow();
+    imageManager = new Image();
 }
 
 AddImages::~AddImages()
@@ -94,6 +95,8 @@ void AddImages::ok_btn_sender(){
         tmpList.append(txt_imgBrief->text());
         path->clear();
 
+        setImageData();
+
         qDebug() << tmpList;
 
         QImage initial_image(fileName);
@@ -119,9 +122,17 @@ void AddImages::ok_btn_sender(){
 void AddImages::compress(){
 
     HuffmanCompression *hc = new HuffmanCompression();
-    List *list = hc->compress("tmpList.toUtf8().toStdString()");
+    List *list = hc->compress(tmpList.toUtf8().toStdString());
     list->sort();
     list->print();
     BinaryTree* bt = hc->order(list);
     qDebug() << QString::fromStdString(hc->decompress(bt,hc->compressedWord));
+}
+
+void AddImages::setImageData(){
+    imageManager->setName(txt_imgName->text());
+    imageManager->setAuthor(txt_imgAuthor->text());
+    imageManager->setDate(txt_imgDate->text());
+    imageManager->setSize(txt_imgSize->text());
+    imageManager->setDescription(txt_imgBrief->text());
 }

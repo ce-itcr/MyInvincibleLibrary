@@ -7,6 +7,7 @@
 #include "Huffman/huffmancompression.h"
 #include "Huffman/binarytree.h"
 #include "Huffman/list.h"
+#include "gallery/image.h"
 
 namespace Ui {
 class AddImages;
@@ -19,6 +20,7 @@ class AddImages : public QDialog
 public:
     explicit AddImages(QWidget *parent = 0);
     ~AddImages();
+    Image *imageManager;
 
 private:
     Ui::AddImages *ui;
@@ -37,6 +39,7 @@ private:
     void uploadImages();
     void ok_btn_sender();
     void compress();
+    void setImageData();
 
 public slots:
     void configureWindow();

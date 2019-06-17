@@ -31,8 +31,8 @@ public:
     QString getDate() const;
     void setDate(const QString &value);
 
-    int getSize() const;
-    void setSize(int value);
+    QString getSize() const;
+    void setSize(const QString &value);
 
     QString getDescription() const;
     void setDescription(const QString &value);
@@ -43,7 +43,7 @@ private:
     QString name;
     QString author;
     QString date;
-    int size;
+    QString size;
     QString description;
 };
 

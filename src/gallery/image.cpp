@@ -7,7 +7,7 @@ Image::Image()
     name = "";
     author = "";
     date = "";
-    size = 0;
+    size = "";
     description = "";
 }
 
@@ -18,7 +18,7 @@ Image::Image(QString id, QString parentId)
     name = "";
     author = "";
     date = "";
-    size = 0;
+    size = "";
     description = "";
 }
 
@@ -84,12 +84,12 @@ void Image::setDate(const QString &value)
     date = value;
 }
 
-int Image::getSize() const
+QString Image::getSize() const
 {
     return size;
 }
 
-void Image::setSize(int value)
+void Image::setSize(const QString &value)
 {
     size = value;
 }

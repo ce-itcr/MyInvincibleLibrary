@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class BinaryTree : public JsonSerializable{
+class BinaryTree : public JsonSerializable {
 public:
     BinaryTreeNode *root;
     bool containsElement(BinaryTreeNode* node,string name);

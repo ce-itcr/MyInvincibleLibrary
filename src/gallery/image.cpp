@@ -103,3 +103,23 @@ void Image::setDescription(const QString &value)
 {
     description = value;
 }
+
+QString Image::getMetadata() const
+{
+    return metadata;
+}
+
+void Image::setMetadata(const QString &value)
+{
+    metadata = value;
+}
+
+QString Image::getData() const
+{
+    return data;
+}
+
+void Image::setData(const QString &value)
+{
+    data = value;
+}

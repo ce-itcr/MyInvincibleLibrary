@@ -2,7 +2,7 @@
 #define SETTINGS_H
 
 #include <QDialog>
-#include "client/client.h"
+//#include "client/client.h"
 
 namespace Ui {
 class Settings;

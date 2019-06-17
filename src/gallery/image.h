@@ -37,6 +37,12 @@ public:
     QString getDescription() const;
     void setDescription(const QString &value);
 
+    QString getMetadata() const;
+    void setMetadata(const QString &value);
+
+    QString getData() const;
+    void setData(const QString &value);
+
 private:
     QString id;
     QString parentId;
@@ -45,6 +51,8 @@ private:
     QString date;
     QString size;
     QString description;
+    QString metadata;
+    QString data;
 };
 
 #endif // IMAGE_H

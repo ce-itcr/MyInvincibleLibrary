@@ -97,8 +97,6 @@ void AddImages::ok_btn_sender(){
 
         setImageData();
 
-        qDebug() << tmpList;
-
         QImage initial_image(fileName);
         QByteArray ba;
         QBuffer buffer(&ba);
@@ -110,7 +108,10 @@ void AddImages::ok_btn_sender(){
         QByteArray by = QByteArray::fromBase64(ba);
         QImage final_image = QImage::fromData(by, "");
 
+        imageManager->setData(ba);
+
         compress();
+
 
         tmpList.clear();
 
@@ -126,7 +127,12 @@ void AddImages::compress(){
     list->sort();
     list->print();
     BinaryTree* bt = hc->order(list);
-    qDebug() << QString::fromStdString(hc->decompress(bt,hc->compressedWord));
+    QJsonDocument doc(JsonSerializer::serialize(*bt));
+    QString data = doc.toJson(QJsonDocument::Compact);
+    imageManager->setMetadata(data);
+
+//    imageManager->setMetadata(JsonSerializer::serialize(*bt));
+//    qDebug() << QString::fromStdString(hc->decompress(bt,hc->compressedWord));
 }
 
 void AddImages::setImageData(){

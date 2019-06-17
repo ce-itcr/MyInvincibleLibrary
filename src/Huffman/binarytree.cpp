@@ -132,7 +132,9 @@ void BinaryTree::deleteAll(BinaryTreeNode *currentNode){
 }
 
 void BinaryTree::write(QJsonObject &jsonObj) const{
-    jsonObj["root"] = JsonSerializer::serialize(*root);
+    if(root != nullptr){
+        jsonObj["root"] = JsonSerializer::serialize(*root);
+    }
 }
 
 void BinaryTree::read(const QJsonObject &jsonObj){

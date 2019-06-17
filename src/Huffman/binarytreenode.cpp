@@ -43,8 +43,13 @@ void BinaryTreeNode::write(QJsonObject &jsonObj) const
 {
     jsonObj["name"] = QString::fromStdString(name);
     jsonObj["frecuency"] = frecuency;
-    jsonObj["right"] = JsonSerializer::serialize(*right);
-    jsonObj["left"] = JsonSerializer::serialize(*left);
+    if(right != nullptr){
+        jsonObj["right"] = JsonSerializer::serialize(*right);
+    }
+    if(left != nullptr){
+        jsonObj["left"] = JsonSerializer::serialize(*left);
+    }
+
 }
 
 void BinaryTreeNode::read(const QJsonObject &jsonObj)

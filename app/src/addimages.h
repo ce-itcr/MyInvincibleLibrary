@@ -27,6 +27,7 @@ private:
 
     QString fileName;
     QString tmpList;
+    List tmpQList;
 
     QLineEdit* txt_imgDate;
     QLineEdit* txt_imgSize;

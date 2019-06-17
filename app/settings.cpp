@@ -18,6 +18,6 @@ void Settings::on_pushButton_clicked()
 {
     QString ip = ui->ipEdit->toPlainText();
     QString port = ui->portEdit->toPlainText();
-    Client::getInstance()->loadHost(ip, port);
+//    Client::getInstance()->loadHost(ip, port);
     close();
 }

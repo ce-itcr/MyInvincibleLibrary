@@ -30,9 +30,11 @@ public class FoldersResource {
     @Path("/{folderId}")
     public Response putImages(@PathParam("folderId") String folderId, List<Image> images) {
         boolean status = folders.putFolders(folderId, images);
+        long subFoldersCount = folders.countSubFolders(folderId);
 
         Response.ResponseBuilder builder = Response.ok();
         builder.header("folder-id:", folderId);
+        builder.header("subFoldersCount:", subFoldersCount);
         if (status) builder.status(201);
         else builder.status(409);
         return builder.build();
@@ -42,9 +44,11 @@ public class FoldersResource {
     @Path("/{folderId}")
     public Response postImages(@PathParam("folderId") String folderId, List<Image> images) {
         List<Image>  data = folders.postFolders(folderId, images);
+        long subFoldersCount = folders.countSubFolders(folderId);
 
         Response.ResponseBuilder builder = Response.ok(data);
         builder.header("folder-id:", folderId);
+        builder.header("subFoldersCount:", subFoldersCount);
         if (data.isEmpty()) builder.status(404);
         else builder.status(200);
         return builder.build();
@@ -59,6 +63,28 @@ public class FoldersResource {
         builder.header("folder-id:", folderId);
         if (status) builder.status(202);
         else builder.status(404);
+        return builder.build();
+    }
+
+    @PUT
+    @Path("/sub/{parentId}")
+    public Response putFolder(@PathParam("parentId") String parentId) {
+        long folderId = folders.createSubFolder(parentId);
+
+        Response.ResponseBuilder builder = Response.ok();
+        builder.header("folder-id:", folderId);
+        builder.status(201);
+        return builder.build();
+    }
+
+    @DELETE
+    @Path("/sub/{folderId}")
+    public Response deleteFolder(@PathParam("folderId") String folderId) {
+        folders.deleteSubFolders(folderId);
+
+        Response.ResponseBuilder builder = Response.ok();
+        builder.header("folder-id:", folderId);
+        builder.status(201);
         return builder.build();
     }
 }

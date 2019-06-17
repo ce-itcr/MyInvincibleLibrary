@@ -12,7 +12,7 @@ public class FolderManager {
         return instance;
     }
 
-    public List<Image> getFolders(String folderId) {
+    public List<Image> getImages(String folderId) {
         List<Image> images;
         List<Image> imagesMD;
         List<Image> imagesR5;
@@ -24,15 +24,27 @@ public class FolderManager {
         return images;
     }
 
-    public boolean createFolders(String folderId, List<Image> images) {
+    public boolean createImages(String folderId, List<Image> images) {
         return metaDataManager.INSERT(folderId, images);
     }
 
-    public List<Image>  modifiedFolders(String folderId, List<Image> images) {
+    public List<Image> modifiedImages(String folderId, List<Image> images) {
         return metaDataManager.UPDATE(folderId, images);
     }
 
-    public boolean deleteFolders(String folderId) {
+    public boolean deleteImages(String folderId) {
         return metaDataManager.DELETE(folderId);
+    }
+
+    public long createSubFolder(String parentId) {
+        return metaDataManager.insertSubFolder(parentId);
+    }
+
+    public void deleteSubFolder(String folderId) {
+        metaDataManager.deleteSubFolder(folderId);
+    }
+
+    public long countSubFolders(String folderId) {
+        return metaDataManager.countSubFolders(folderId);
     }
 }

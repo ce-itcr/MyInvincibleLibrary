@@ -15,19 +15,31 @@ class FoldersService {
     }
 
     List<Image> getFolders(String folderId) {
-        return manager.getFolders(folderId);
+        return manager.getImages(folderId);
     }
 
     boolean putFolders(String folderId, List<Image> images) {
-        return manager.createFolders(folderId, images);
+        return manager.createImages(folderId, images);
     }
 
     List<Image>  postFolders(String folderId, List<Image> images) {
-        return manager.modifiedFolders(folderId, images);
+        return manager.modifiedImages(folderId, images);
     }
 
     boolean deleteFolders(String folderId) {
-        return manager.deleteFolders(folderId);
+        return manager.deleteImages(folderId);
+    }
+
+    public long createSubFolder(String parentId) {
+        return manager.createSubFolder(parentId);
+    }
+
+    public void deleteSubFolders(String folderId) {
+        manager.deleteSubFolder(folderId);
+    }
+
+    public long countSubFolders(String folderId) {
+        return manager.countSubFolders(folderId);
     }
 
     private FoldersService() {

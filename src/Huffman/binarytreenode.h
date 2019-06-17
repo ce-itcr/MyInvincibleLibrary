@@ -2,16 +2,21 @@
 #define BINARYTREENODE_H
 
 #include <iostream>
+#include "json/jsonserializable.h"
+#include "json/jsonserializer.h"
 
 using namespace std;
 
-class BinaryTreeNode{
+class BinaryTreeNode : public JsonSerializable{
 private:
     string name;
     int frecuency;
     BinaryTreeNode* left;
     BinaryTreeNode* right;
 public:
+
+    void write(QJsonObject &jsonObj) const;
+    void read(const QJsonObject &jsonObj);
 
     const string &getName() const;
 

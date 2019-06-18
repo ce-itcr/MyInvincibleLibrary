@@ -109,8 +109,10 @@ void MetadataManager::consult_metadata_grid(){
     QPushButton* ok_btn = new QPushButton("OK");
     ui->gridLayout->addWidget(ok_btn,2,2);
 
-    QTableWidget* tableWidget = new QTableWidget(30,6, this);
+    QTableWidget* tableWidget = new QTableWidget(30,5, this);
     ui->gridLayout->addWidget(tableWidget,3,0,3,3);
+
+
 }
 
 void MetadataManager::remove_metadata_grid(){
